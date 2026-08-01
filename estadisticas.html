@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadisticas</title>
+    <script src="./dominio/memoria.js"></script>
+    <script src="./dominio/cafeteria.js"></script>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body onload="CargoDatosEstadisticas()" class="fondo">
+    <header class="encabezado">
+        <h1>Obligatorio Café</h1>
+        <nav class="btnPrincipales">
+            <a href="./cafeteria.html">Principal</a>
+            <a href="./productos.html">Productos</a>
+            <a href="./vendedores.html">Vendedores</a>
+            <a href="./ventas.html">Ventas</a>
+        </nav>
+    </header>
+        
+    <main class="contenedorTarjeta">
+        <section class="tarjeta">
+            <h2 class="titulo">Estadísticas</h2>
+                <form>
+                    <div class="campos">
+                        <label for="totalRecaudado">Total recaudado: </label>
+                        <input type="text" id="totalRecaudado" disabled>
+
+                        <label for="masVendido">Producto más vendido: </label>
+                        <input type="text" id="masVendido" disabled>
+
+                        <label for="mejorVendedor">Mejor vendedor: </label>
+                        <input type="text" id="mejorVendedor" disabled>
+                    </div>
+                </form>
+        </section>
+
+        <div class="tarjeta listado">
+            <label for="productos-con-stock">Productos con Stock</label>
+            <br>
+            <select id="productos-con-stock" size="6"></select>
+        </div>
+    </main>
+</body>
+</html>

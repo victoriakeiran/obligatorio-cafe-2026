@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria</title>
+    <script src="./dominio/producto.js"></script>
+    <script src="./dominio/memoria.js"></script>
+    <script src="./dominio/cafeteria.js"></script>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body onload="CargoDatosProductos()" class="fondo">
+    <header class="encabezado">
+        <h1>Obligatorio Café</h1>
+        <nav class="btnPrincipales">
+            <a href="./cafeteria.html">Principal</a>
+            <a href="./vendedores.html">Vendedores</a>
+            <a href="./ventas.html">Ventas</a>
+            <a href="./estadisticas.html">Estadisticas</a>
+        </nav>
+    </header>
+
+    <main class="contenedorTarjeta">
+        <section class="tarjeta">
+            <h2 class="titulo">ABM Productos</h2>
+            <form>
+                <div class="campos">
+                    <label for="codigo">Código:</label>
+                    <input type="number" id="codigo">
+
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre">
+
+                    <label for="descripcion">Descripcion</label>
+                    <textarea id="descripcion" rows="4"></textarea>
+
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" min="0">
+
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" min="0">
+                </div>
+
+                <div class="botones">
+                    <input class="boton" type="button" value="Agregar" onclick="AgregarProducto()">
+                    <input class="boton" type="button" value="Modificar" onclick="ModificarProducto()">
+                    <input class="boton" type="button" value="Eliminar" onclick="EliminarProducto()">
+                    <input class="boton" type="button" value="Limpiar" onclick="InicializarProducto()">
+                </div>
+            </form>
+        </section>
+
+        <section class="tarjeta listado">
+            <h2 class="titulo">Listado de Productos</h2>
+            <select id="lista-productos" onchange="SeleccionarProducto()" size="6"></select>
+        </section>
+    </main>
+
+</body>
+</html>

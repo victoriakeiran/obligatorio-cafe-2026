@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendedores</title>
+    <script src="./dominio/vendedor.js"></script>
+    <script src="./dominio/memoria.js"></script>
+    <script src="./dominio/cafeteria.js"></script>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body onload="CargoDatosVendedor()" class="fondo">
+    <header class="encabezado">
+        <h1>Obligatorio Café</h1>
+        <nav class="btnPrincipales">
+            <a href="./cafeteria.html">Principal</a>
+            <a href="./productos.html">Productos</a>
+            <a href="./ventas.html">Ventas</a>
+            <a href="./estadisticas.html">Estadisticas</a>
+        </nav>
+    </header>
+
+    <main class="contenedorTarjeta">
+        <section class="tarjeta">
+            <h2 class="titulo">ABM Vendedores</h2>
+
+            <form>
+                <div class="campos">
+                    <label for="codigo">Código:</label>
+                    <input type="number" id="codigo">
+
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre">
+
+                    <label for="cedula">Cédula:</label>
+                    <input type="number" id="cedula">
+                </div>
+
+                <div class="botones">
+                    <input class="boton" type="button" value="Agregar" onclick="AgregarVendedor()">
+                    <input class="boton" type="button" value="Modificar" onclick="ModificarVendedor()">
+                    <input class="boton" type="button" value="Eliminar" onclick="EliminarVendedor()">
+                    <input class="boton" type="button" value="Limpiar" onclick="InicializarVendedor()">
+                </div>
+            </form>
+        </section>
+
+        <section class="tarjeta listado">
+            <h2 class="titulo">Listado de vendedores</h2>
+            <select id="lista-vendedores" onchange="SeleccionarVendedor()" size="6"></select>
+        </section>
+    </main>
+
+</body>
+</html>

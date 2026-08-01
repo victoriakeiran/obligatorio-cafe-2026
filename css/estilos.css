@@ -1,0 +1,180 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+}
+h1{
+    color: #6b8a6e;
+    font-size: 60px;
+}
+
+.home {
+    margin: 0;
+    height: 100vh;
+    background-image: url(../Imagenes/home.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fondo {
+    margin: 0;
+    height: 150%;
+    background-image: url(../Imagenes/Fondo.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    background-attachment: fixed;
+
+}
+
+.encabezado {
+    text-align: center;
+    padding: 20px;
+}
+
+.btnPrincipales a {
+    background-color: #F2EFE6;
+    color: #000000;
+    text-decoration: none; 
+    font-weight: bold; 
+    padding: 8px 14px;
+    border-radius: 8px;
+    margin: 5px;
+}
+.btnPrincipales a:hover { 
+    background-color: #A3B18A;
+}
+
+.botones {
+    margin-top: 10px;
+    border-radius: 0%;
+    text-align: center;
+}
+.botones input:hover { 
+    background-color: #A3B18A;
+}
+.boton {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin: 5px;
+    margin-right: 3%;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    background-color: #F2EFE6;
+    font-weight: bold; 
+    width: 20%;
+}
+
+button { 
+    background-color: transparent;
+    color: #C8A165;
+    margin-top: 280px;
+    margin-right: 130px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 200px;
+    height: 60px;
+    font-size: 20px; 
+}
+
+
+.campos {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+    margin-right: auto;
+}
+input, select {
+    padding: 9px;
+    border: 1px solid #bcbcbc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.listado select { 
+    width: 100%;
+    height: 200px;
+}
+
+
+.tarjeta {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.contenedorTarjeta {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.tarjetaCafeteria {
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 100px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.contenedorCafeteria {
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contenedorCarteles {
+    display: flex; 
+    justify-content: center; 
+    gap: 30px; 
+    padding: 80px 20px; 
+    flex-wrap: wrap; 
+    background-color: transparent;
+}
+.cartel {
+    width: 250px;
+    background: transparent;
+    border-radius: 20px;
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+
+.cartel img {
+    width: 100%;
+    height: 180%;
+    object-fit: cover;
+}
+
+.contenido {
+    padding: 10px;
+}
+.contenido h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.cartel img {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+}
+
+.cartel:hover img { 
+    transform: scale(1.05); 
+}
