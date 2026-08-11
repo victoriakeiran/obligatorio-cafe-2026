@@ -1,5 +1,8 @@
+import { Memoria } from "./servicios/Memoria.js";
 
-//#region Estadísticas!
+let ventas = [];
+let productos = [];
+let vendedores = [];
 
 function CargoDatosEstadisticas(){
     const LaMemoria = new Memoria();
@@ -89,4 +92,5 @@ function MejorVendedor(){
     }
    
 }
-//#endregion
+
+CargoDatosEstadisticas();
