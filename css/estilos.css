@@ -3,7 +3,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: #000000;
 }
-h1{
+
+h1 {
     color: #6b8a6e;
     font-size: 60px;
 }
@@ -19,16 +20,15 @@ h1{
     justify-content: center;
     align-items: center;
 }
+
 .fondo {
     margin: 0;
-    height: 150%;
+    min-height: 100vh;
     background-image: url(../Imagenes/Fondo.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    justify-content: center;
     background-attachment: fixed;
-
 }
 
 .encabezado {
@@ -36,16 +36,25 @@ h1{
     padding: 20px;
 }
 
+.btnPrincipales {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .btnPrincipales a {
     background-color: #F2EFE6;
     color: #000000;
-    text-decoration: none; 
-    font-weight: bold; 
+    text-decoration: none;
+    font-weight: bold;
     padding: 8px 14px;
     border-radius: 8px;
     margin: 5px;
 }
-.btnPrincipales a:hover { 
+
+.btnPrincipales a:hover {
     background-color: #A3B18A;
 }
 
@@ -54,9 +63,11 @@ h1{
     border-radius: 0%;
     text-align: center;
 }
-.botones input:hover { 
+
+.botones input:hover {
     background-color: #A3B18A;
 }
+
 .boton {
     border: none;
     border-radius: 8px;
@@ -66,11 +77,11 @@ h1{
     cursor: pointer;
     color: rgb(0, 0, 0);
     background-color: #F2EFE6;
-    font-weight: bold; 
+    font-weight: bold;
     width: 20%;
 }
 
-button { 
+button {
     background-color: transparent;
     color: #C8A165;
     margin-top: 280px;
@@ -79,9 +90,8 @@ button {
     cursor: pointer;
     width: 200px;
     height: 60px;
-    font-size: 20px; 
+    font-size: 20px;
 }
-
 
 .campos {
     display: grid;
@@ -94,18 +104,19 @@ label {
     font-weight: bold;
     margin-right: auto;
 }
-input, select {
+
+input,
+select {
     padding: 9px;
     border: 1px solid #bcbcbc;
     border-radius: 6px;
     font-size: 15px;
 }
 
-.listado select { 
+.listado select {
     width: 100%;
     height: 200px;
 }
-
 
 .tarjeta {
     background-color: transparent;
@@ -114,13 +125,24 @@ input, select {
     margin-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
+
 .contenedorTarjeta {
     width: 90%;
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
+
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
 }
 
+.tarjeta {
+    flex: 1 1 400px;
+    max-width: 600px;
+}
 
 .tarjetaCafeteria {
     border-radius: 8px;
@@ -128,53 +150,154 @@ input, select {
     margin-bottom: 100px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
+
 .contenedorCafeteria {
-    width: 100%;
-    max-width: 80%;
+    width: 80%;
     margin: 0 auto;
     text-align: center;
 }
 
 .contenedorCarteles {
-    display: flex; 
-    justify-content: center; 
-    gap: 30px; 
-    padding: 80px 20px; 
-    flex-wrap: wrap; 
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 80px 20px;
+    flex-wrap: wrap;
     background-color: transparent;
 }
+
 .cartel {
     width: 250px;
     background: transparent;
     border-radius: 20px;
-    overflow: hidden; 
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
-
 
 .cartel img {
     width: 100%;
-    height: 180%;
+    height: 180px;
     object-fit: cover;
+    transition: transform 1s;
 }
 
 .contenido {
     padding: 10px;
 }
+
 .contenido h2 {
     font-size: 20px;
     margin-bottom: 10px;
     color: #000000;
 }
 
-.cartel img {
-    width: 100%;
-    height: 100%;
-    transition: transform 1s;
+.cartel:hover img {
+    transform: scale(1.05);
 }
 
-.cartel:hover img { 
-    transform: scale(1.05); 
+/* CELULARES: */
+
+@media (max-width: 600px) {
+
+    .fondo {
+        min-height: 100vh;
+        background-attachment: scroll;
+    }
+
+    .encabezado {
+        padding: 15px 10px;
+    }
+
+    h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .btnPrincipales {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btnPrincipales a {
+        width: 80%;
+        max-width: 250px;
+        margin: 0;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* Cafetería */
+
+    .contenedorCafeteria {
+        width: 95%;
+    }
+
+    .contenedorCarteles {
+        padding: 30px 10px;
+        gap: 20px;
+    }
+
+    .cartel {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .cartel img {
+        height: 180px;
+    }
+
+    .contenido h2 {
+        font-size: 18px;
+    }
+
+    .contenedorTarjeta {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .tarjeta {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .campos {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .campos label {
+        margin-top: 0.8rem;
+        margin-right: 0;
+    }
+
+    .campos input,
+    .campos select,
+    .listado select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .listado select {
+        height: 200px;
+    }
+
+    .boton {
+        width: 80%;
+        margin: 5px auto;
+        display: block;
+    }
+
+    button {
+        margin-top: 20px;
+        margin-right: 0;
+        width: 80%;
+        max-width: 250px;
+    }
 }
