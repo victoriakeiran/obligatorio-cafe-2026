@@ -1,4 +1,10 @@
-//#region Productos!
+
+import { Producto } from "./clases/Producto.js";
+import { Memoria } from "./servicios/Memoria.js";
+
+let productos = [];
+let ventas = [];
+
 
 function CargoDatosProductos(){
     const LaMemoria = new Memoria();
@@ -174,4 +180,12 @@ function EliminarProducto(){
     alert("Se ha eliminado correctamente su producto");
 }
 
-//#endregion
+document.getElementById("btnAgregar").addEventListener("click", AgregarProducto);
+document.getElementById("btnModificar").addEventListener("click", ModificarProducto);
+document.getElementById("btnEliminar").addEventListener("click", EliminarProducto);
+document.getElementById("btnLimpiar").addEventListener("click", InicializarProducto);
+
+document.getElementById("lista-productos").addEventListener("change", SeleccionarProducto);
+
+CargoDatosProductos();
+

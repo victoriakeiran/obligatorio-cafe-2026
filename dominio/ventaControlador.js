@@ -1,9 +1,19 @@
-//#region Ventas!
+import { Venta } from "./clases/Venta.js";
+import { Memoria } from "./servicios/Memoria.js";
+
+let ventas = [];
+let productos = [];
+let vendedores = [];
+
+
 function CargoDatosVentas(){
     const LaMemoria = new Memoria();
     ventas = LaMemoria.leer('ventas');
     productos = LaMemoria.leer('productos');
     vendedores = LaMemoria.leer('vendedores');
+
+    console.log("PRODUCTOS:", productos);
+console.log("VENDEDORES:", vendedores);
     
     if(!ventas){
         ventas = [];
@@ -153,6 +163,24 @@ function InicializarVenta(){
     document.getElementById("total").value = "";
     document.getElementById("codigo").focus();
     document.getElementById("codigo").value = ventas.length+1;
+}
+
+function BuscarProducto(pCodigo){
+    for (let objProducto of productos) {
+        if (objProducto.codigo == pCodigo){
+            return objProducto;
+        }
+    }
+    return null;
+}
+
+function BuscarVendedor(pCodigo){
+    for (let objVendedor of vendedores) {
+        if (objVendedor.codigo == pCodigo){
+            return objVendedor;
+        }
+    }
+    return null;
 }
 
 function AgregarVenta(){
@@ -319,5 +347,14 @@ function EliminarVenta(){
     ListarVentas();
     alert("Se ha eliminado correctamente su venta");
 }
-//#endregion
+
+document.getElementById("btnAgregar").addEventListener("click", AgregarVenta);
+document.getElementById("btnEliminar").addEventListener("click", EliminarVenta);
+document.getElementById("btnLimpiar").addEventListener("click", InicializarVenta);
+
+document.getElementById("codigo-producto").addEventListener("change", CargarPrecioProducto);
+document.getElementById("cantidad").addEventListener("blur", CalculoTotal);
+document.getElementById("lista-ventas").addEventListener("change", SeleccionarVenta);
+
+CargoDatosVentas();
 

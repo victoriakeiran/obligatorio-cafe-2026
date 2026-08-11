@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafeteria</title>
-    <script src="./dominio/producto.js"></script>
-    <script src="./dominio/memoria.js"></script>
-    <script src="./dominio/cafeteria.js"></script>
+    <script type="module" src="./dominio/productoControlador.js"></script>
     <link rel="stylesheet" href="./css/estilos.css">
 </head>
-<body onload="CargoDatosProductos()" class="fondo">
+<body class="fondo">
     <header class="encabezado">
         <h1>Obligatorio Café</h1>
         <nav class="btnPrincipales">
@@ -42,17 +40,17 @@
                 </div>
 
                 <div class="botones">
-                    <input class="boton" type="button" value="Agregar" onclick="AgregarProducto()">
-                    <input class="boton" type="button" value="Modificar" onclick="ModificarProducto()">
-                    <input class="boton" type="button" value="Eliminar" onclick="EliminarProducto()">
-                    <input class="boton" type="button" value="Limpiar" onclick="InicializarProducto()">
+                    <input id="btnAgregar" class="boton" type="button" value="Agregar">
+                    <input id="btnModificar" class="boton" type="button" value="Modificar">
+                    <input id="btnEliminar" class="boton" type="button" value="Eliminar">
+                    <input id="btnLimpiar" class="boton" type="button" value="Limpiar">
                 </div>
             </form>
         </section>
 
         <section class="tarjeta listado">
             <h2 class="titulo">Listado de Productos</h2>
-            <select id="lista-productos" onchange="SeleccionarProducto()" size="6"></select>
+            <select id="lista-productos" size="6"></select>
         </section>
     </main>
 

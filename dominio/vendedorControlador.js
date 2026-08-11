@@ -1,4 +1,8 @@
-//#region Vendedores!
+import { Vendedor } from "./clases/Vendedor.js";
+import { Memoria } from "./servicios/Memoria.js";
+
+let vendedores = [];
+let ventas = [];
 
 function CargoDatosVendedor(){
     const LaMemoria = new Memoria();
@@ -167,4 +171,11 @@ function EliminarVendedor(){
     alert("El vendedor se elimino correctamente");
 }
 
-//#endregion
+document.getElementById("btnAgregar").addEventListener("click", AgregarVendedor);
+document.getElementById("btnModificar").addEventListener("click", ModificarVendedor);
+document.getElementById("btnEliminar").addEventListener("click", EliminarVendedor);
+document.getElementById("btnLimpiar").addEventListener("click", InicializarVendedor);
+
+document.getElementById("lista-vendedores").addEventListener("change", SeleccionarVendedor);
+
+CargoDatosVendedor();
