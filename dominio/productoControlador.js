@@ -180,10 +180,25 @@ function EliminarProducto(){
     alert("Se ha eliminado correctamente su producto");
 }
 
-document.getElementById("btnAgregar").addEventListener("click", AgregarProducto);
-document.getElementById("btnModificar").addEventListener("click", ModificarProducto);
-document.getElementById("btnEliminar").addEventListener("click", EliminarProducto);
-document.getElementById("btnLimpiar").addEventListener("click", InicializarProducto);
+document.getElementById("botones-productos").addEventListener("click", function(evento) {
+
+    if (evento.target.id === "btnAgregar") {
+        AgregarProducto();
+    }
+
+    if (evento.target.id === "btnModificar") {
+        ModificarProducto();
+    }
+
+    if (evento.target.id === "btnEliminar") {
+        EliminarProducto();
+    }
+
+    if (evento.target.id === "btnLimpiar") {
+        InicializarProducto();
+    }
+
+});
 
 document.getElementById("lista-productos").addEventListener("change", SeleccionarProducto);
 
