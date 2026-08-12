@@ -1,5 +1,6 @@
 import { Vendedor } from "./clases/Vendedor.js";
 import { Memoria } from "./servicios/Memoria.js";
+import { mostrarError, limpiarError } from "./modulos/util.js";
 
 let vendedores = [];
 let ventas = [];
@@ -27,20 +28,46 @@ function AgregarVendedor(){
     let nombre = document.getElementById("nombre").value;
     let cedula = document.getElementById("cedula").value;
 
-    
-    if(cedula == "" || nombre == "" || codigo == ""){
-        alert("Debe ingresar todos los campos!");
+    limpiarError("codigo");
+    limpiarError("nombre");
+    limpiarError("cedula");
+
+    let hayError = false;
+
+    if (codigo === "") {
+        mostrarError("codigo", "El código es obligatorio.");
+        hayError = true;
+    }
+
+    if (nombre === "") {
+        mostrarError("nombre", "El nombre es obligatorio.");
+        hayError = true;
+    }
+
+    if (cedula === "") {
+        mostrarError("cedula", "La cédula es obligatoria.");
+        hayError = true;
+    }
+
+    if (hayError) {
+        return;
+    }
+
+    if (cedula.length !== 8) {
+        mostrarError("cedula", "La cédula debe tener 8 dígitos.");
         return;
     }
 
     if (BuscarVendedor(codigo) != null) {
-        alert('Ya existe un vendedor con ese código.');
+        mostrarError("codigo", "Ya existe un vendedor con ese código.");
         return;
     }
+
     if (BuscarVendedorCedula(cedula) != null) {
-        alert('Ya existe un vendedor con esa cédula.');
+        mostrarError("cedula", "Ya existe un vendedor con esa cédula.");
         return;
     }
+    
 
     let unVendedor = new Vendedor(codigo, nombre, cedula);
     vendedores.push(unVendedor);

@@ -1,5 +1,6 @@
 import { Venta } from "./clases/Venta.js";
 import { Memoria } from "./servicios/Memoria.js";
+import { mostrarError, limpiarError } from "./modulos/util.js";
 
 let ventas = [];
 let productos = [];
@@ -11,9 +12,6 @@ function CargoDatosVentas(){
     ventas = LaMemoria.leer('ventas');
     productos = LaMemoria.leer('productos');
     vendedores = LaMemoria.leer('vendedores');
-
-    console.log("PRODUCTOS:", productos);
-console.log("VENDEDORES:", vendedores);
     
     if(!ventas){
         ventas = [];
@@ -192,22 +190,45 @@ function AgregarVenta(){
     let cantidad = parseInt(document.getElementById("cantidad").value);
     let total = parseInt(document.getElementById("total").value);
 
-        if (cantidad <=0) {
-        alert("La cantidad debe ser mayor a cero");
+    limpiarError("codigo");
+    limpiarError("fecha");
+    limpiarError("codigo-vendedor");
+    limpiarError("codigo-producto");
+    limpiarError("cantidad");
+
+    let hayError = false;
+
+    if (codigo === "") {
+        mostrarError("codigo", "El código es obligatorio.");
+        hayError = true;
+    }
+
+    if (fecha === "") {
+        mostrarError("fecha", "La fecha es obligatoria.");
+        hayError = true;
+    }
+
+    if (codigoVendedor === "") {
+        mostrarError("codigo-vendedor", "Debe seleccionar un vendedor.");
+        hayError = true;
+    }
+
+    if (codigoProducto === "") {
+        mostrarError("codigo-producto", "Debe seleccionar un producto.");
+        hayError = true;
+    }
+
+    if (isNaN(cantidad) || cantidad <= 0) {
+        mostrarError("cantidad", "La cantidad debe ser mayor a 0.");
+        hayError = true;
+    }
+
+    if (hayError) {
         return;
     }
 
-    if(codigo == "" || fecha == "" || codigoVendedor == "" || codigoProducto == ""){
-        alert("Debe ingresar todos los campos!");
-        return;
-    }
-    if(isNaN(cantidad) || isNaN(total)){
-        alert("Los valores ingresados no son correctos!");
-        return;
-    }
-
-     if (BuscarVenta(codigo) != null) {
-        alert("Ya existe una venta con ese código.");
+    if (BuscarVenta(codigo) != null) {
+        mostrarError("codigo", "Ya existe una venta con ese código.");
         return;
     }
     
@@ -215,26 +236,21 @@ function AgregarVenta(){
     
     let unVendedor = BuscarVendedor(codigoVendedor);
     
-     if (cantidad > Number(unProducto.stock)) {
-        alert("No hay stock suficiente para esta venta");
+    if (cantidad > Number(unProducto.stock)) {
+        mostrarError("cantidad", "No hay stock suficiente para esta venta.");
         return;
     }
 
     let unaVenta = new Venta(codigo, fecha, unProducto, unVendedor, cantidad, total);
     ventas.push(unaVenta);
 
-
-
     const LaMemoria = new Memoria();
     LaMemoria.escribir('ventas', ventas);
-
-
 
     ActualizarStock(codigoProducto, cantidad);
     ActualizarCantidadVendidos(codigoProducto, cantidad);
     LaMemoria.escribir('productos', productos);
 
-    
     ActualizarCantidadVentas(codigoVendedor);
     
     LaMemoria.escribir('vendedores', vendedores);

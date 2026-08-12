@@ -27,12 +27,15 @@
                 <div class="campos">
                     <label for="codigo">Código:</label>
                     <input type="number" id="codigo">
+                    <small id="error-codigo" class="error"></small>
 
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre">
+                    <small id="error-nombre" class="error"></small>
 
                     <label for="cedula">Cédula:</label>
-                    <input type="number" id="cedula">
+                    <input type="text" id="cedula" maxlength="8">
+                    <small id="error-cedula" class="error"></small>
                 </div>
 
                 <div class="botones" id="botones-vendedores">

@@ -1,6 +1,7 @@
 
 import { Producto } from "./clases/Producto.js";
 import { Memoria } from "./servicios/Memoria.js";
+import { mostrarError, limpiarError } from "./modulos/util.js";
 
 let productos = [];
 let ventas = [];
@@ -58,23 +59,51 @@ function AgregarProducto(){
     let precio = parseInt(document.getElementById("precio").value);
     let stock = parseInt(document.getElementById("stock").value);
 
-      if (precio <= 0 || stock <= 0) {
-        alert("El precio debe de ser mayor a cero y el stock no puede ser menor a cero");
+    limpiarError("codigo");
+    limpiarError("nombre");
+    limpiarError("descripcion");
+    limpiarError("precio");
+    limpiarError("stock");
+
+      let hayError = false;
+
+    if (codigo === "") {
+        mostrarError("codigo", "El código es obligatorio.");
+        hayError = true;
+    }
+
+    if (nombre === "") {
+        mostrarError("nombre", "El nombre es obligatorio.");
+        hayError = true;
+    }
+
+    if (descripcion === "") {
+        mostrarError("descripcion", "La descripción es obligatoria.");
+        hayError = true;
+    }
+
+    if (hayError) {
         return;
     }
 
-    if(codigo == "" || nombre == "" || descripcion == ""){
-        alert("Debe ingresar todos los campos!");
+    if (isNaN(precio) || precio <= 0) {
+    mostrarError("precio", "El precio debe ser mayor a 0.");
+    hayError = true;
+    }
+
+    if (isNaN(stock) || stock <= 0) {
+        mostrarError("stock", "El stock debe ser mayor a 0.");
+        hayError = true;
+    }
+
+    if (hayError) {
         return;
     }
-    if(isNaN(precio) || isNaN(stock)){
-        alert("Los valores ingresados no son correctos!");
-        return;
-    }
+
     if (BuscarProducto(codigo) != null) {
-        alert("Ya existe un producto con ese código.");
-        return;
-    }
+    mostrarError("codigo", "Ya existe un producto con ese código.");
+    return;
+}
 
     let unProducto = new Producto(codigo, nombre, descripcion, precio, stock);
     productos.push(unProducto);

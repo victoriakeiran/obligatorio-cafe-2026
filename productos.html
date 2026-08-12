@@ -26,18 +26,25 @@
                 <div class="campos">
                     <label for="codigo">Código:</label>
                     <input type="number" id="codigo">
+                    <small id="error-codigo" class="error"></small>
 
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre">
+                    <small id="error-nombre" class="error"></small>
 
                     <label for="descripcion">Descripcion</label>
                     <textarea id="descripcion" rows="4"></textarea>
+                    <small id="error-descripcion" class="error"></small>
 
                     <label for="precio">Precio:</label>
                     <input type="number" id="precio" min="0">
+                    <small id="error-precio" class="error"></small>
 
                     <label for="stock">Stock:</label>
-                    <input type="number" id="stock" min="0">
+                    <input type="number" id="stock" min="0" step="1"
+                    onkeydown="if(event.key === 'e' || event.key === 'E' || event.key === '+' 
+                    || event.key === '-' || event.key === '.') event.preventDefault()">
+                    <small id="error-stock" class="error"></small>
                 </div>
 
                 <div class="botones" id="botones-productos">
