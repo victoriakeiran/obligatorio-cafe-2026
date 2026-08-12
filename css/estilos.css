@@ -124,6 +124,8 @@ select {
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    flex: 1 1 400px;
+    max-width: 600px;
 }
 
 .contenedorTarjeta {
@@ -131,17 +133,11 @@ select {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-
     display: flex;
     gap: 2rem;
     justify-content: center;
     align-items: stretch;
     flex-wrap: wrap;
-}
-
-.tarjeta {
-    flex: 1 1 400px;
-    max-width: 600px;
 }
 
 .tarjetaCafeteria {
@@ -301,3 +297,61 @@ select {
         max-width: 250px;
     }
 }
+
+.clima-panel {
+    min-height: 280px;
+    background-color: transparent;
+}
+
+.temperatura-principal {
+    color: var(--color-principal);
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.dato-clima {
+    background: #f8fafc;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 1rem;
+}
+
+.dato-clima span {
+    color: #667085;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.dato-clima strong {
+    color: #1f2937;
+    font-size: 1.25rem;
+}
+
+.btn {
+    min-height: 42px;
+}
+
+#btn-consultar {
+    background-color: #F2EFE6 !important;
+    color: #000000 !important;
+    border: none !important;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 8px 14px;
+    margin-top: 15px;
+}
+
+#btn-consultar:hover {
+    background-color: #A3B18A !important;
+    color: #000000 !important;
+}
+
+.panel {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
