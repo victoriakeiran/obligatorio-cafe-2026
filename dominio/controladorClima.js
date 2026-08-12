@@ -3,14 +3,14 @@ import { obtenerClimaActual } from './servicios/ClimaApi.js';
 import { mostrarMensaje, ocultarMensaje } from './servicios/Ui.js';
 
 const ciudades = [
-    new Ciudad('Canelones', -34.5228, -56.2778),
     new Ciudad('Colonia del Sacramento', -34.4626, -57.8398),
+    new Ciudad('Rosario', -34.3139, -57.3525),
     new Ciudad('Juan Lacaze', -34.4311, -57.4483),
-    new Ciudad('Maldonado', -34.9000, -54.9500),
     new Ciudad('Montevideo', -34.9011, -56.1645),
+    new Ciudad('Canelones', -34.5228, -56.2778),
+    new Ciudad('Maldonado', -34.9000, -54.9500),
     new Ciudad('Paysandu', -32.3214, -58.0756),
     new Ciudad('Rivera', -30.9053, -55.5508),
-    new Ciudad('Rosario', -34.3139, -57.3525),
     new Ciudad('Salto', -31.3880, -57.9606)
     
 ];
