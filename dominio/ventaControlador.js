@@ -140,8 +140,14 @@ function ListarVentas(){
 
 function InicializarVenta(){
 
+    limpiarError("codigo");
+    limpiarError("fecha");
+    limpiarError("codigo-vendedor");
+    limpiarError("codigo-producto");
+    limpiarError("cantidad");
+    limpiarError("lista-ventas");
+
     let hoy = new Date();
-    console.log("HOY", hoy);
     
     let anio = hoy.getFullYear();
     let mes = ""+(hoy.getMonth()+1);
@@ -150,7 +156,6 @@ function InicializarVenta(){
     dia = (dia.length == 1)?"0"+dia:dia;
 
     let fecha = anio + "-" + mes + "-" + dia;
-    console.log("FECHA", fecha);
     
     document.getElementById("codigo").value = "";
     document.getElementById("fecha").value = fecha;
@@ -160,8 +165,16 @@ function InicializarVenta(){
     document.getElementById("cantidad").value = "";
     document.getElementById("total").value = "";
     document.getElementById("codigo").focus();
-    document.getElementById("codigo").value = ventas.length+1;
-}
+    let mayorCodigo = 0;
+
+    for (let unaVenta of ventas) {
+        if (Number(unaVenta.codigo) > mayorCodigo) {
+            mayorCodigo = Number(unaVenta.codigo);
+        }
+    }
+
+    document.getElementById("codigo").value = mayorCodigo + 1;
+    }
 
 function BuscarProducto(pCodigo){
     for (let objProducto of productos) {
@@ -188,7 +201,7 @@ function AgregarVenta(){
     let codigoVendedor = document.getElementById("codigo-vendedor").value;
     let codigoProducto = document.getElementById("codigo-producto").value;
     let cantidad = parseInt(document.getElementById("cantidad").value);
-    let total = parseInt(document.getElementById("total").value);
+    let total = parseFloat(document.getElementById("total").value);
 
     limpiarError("codigo");
     limpiarError("fecha");

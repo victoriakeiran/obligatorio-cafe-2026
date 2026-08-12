@@ -39,6 +39,13 @@ function ListarProductos(){
 }
 
 function InicializarProducto(){
+
+    limpiarError("codigo");
+    limpiarError("nombre");
+    limpiarError("descripcion");
+    limpiarError("precio");
+    limpiarError("stock");
+    limpiarError("lista-productos");
     
     document.getElementById("codigo").value = "";
     document.getElementById("nombre").value = "";
@@ -48,15 +55,23 @@ function InicializarProducto(){
     document.getElementById("codigo").disabled = false;
 
     document.getElementById("codigo").focus();
-    document.getElementById("codigo").value = productos.length+1;
-}
+    let mayorCodigo = 0;
+
+    for (let unProducto of productos) {
+        if (Number(unProducto.codigo) > mayorCodigo) {
+            mayorCodigo = Number(unProducto.codigo);
+        }
+    }
+
+    document.getElementById("codigo").value = mayorCodigo + 1;
+    }
 
 function AgregarProducto(){
    
     let codigo = document.getElementById("codigo").value;
     let nombre = document.getElementById("nombre").value;
     let descripcion = document.getElementById("descripcion").value;
-    let precio = parseInt(document.getElementById("precio").value);
+    let precio = parseFloat(document.getElementById("precio").value);
     let stock = parseInt(document.getElementById("stock").value);
 
     limpiarError("codigo");
@@ -137,18 +152,19 @@ function ModificarProducto(){
     let codigoSeleccionado = document.getElementById("lista-productos").value;
     let nombre = document.getElementById("nombre").value;
     let descripcion = document.getElementById("descripcion").value;
-    let precio = parseInt(document.getElementById("precio").value);
+    let precio = parseFloat(document.getElementById("precio").value);
     let stock = parseInt(document.getElementById("stock").value);
 
     limpiarError("nombre");
     limpiarError("descripcion");
     limpiarError("precio");
     limpiarError("stock");
+    limpiarError("lista-productos");
 
     let hayError = false;
 
     if (codigoSeleccionado === "") {
-        mostrarError("nombre", "Debe seleccionar un producto para modificar.");
+        mostrarError("lista-productos", "Debe seleccionar un producto para modificar.");
         hayError = true;
     }
 
@@ -255,6 +271,29 @@ document.getElementById("botones-productos").addEventListener("click", function(
         InicializarProducto();
     }
 
+});
+
+document.getElementById("stock").addEventListener("keydown", function(evento) {
+    if (
+        evento.key === "e" ||
+        evento.key === "E" ||
+        evento.key === "+" ||
+        evento.key === "-" ||
+        evento.key === "."
+    ) {
+        evento.preventDefault();
+    }
+});
+
+document.getElementById("precio").addEventListener("keydown", function(evento) {
+    if (
+        evento.key === "e" ||
+        evento.key === "E" ||
+        evento.key === "+" ||
+        evento.key === "-"
+    ) {
+        evento.preventDefault();
+    }
 });
 
 document.getElementById("lista-productos").addEventListener("change", SeleccionarProducto);

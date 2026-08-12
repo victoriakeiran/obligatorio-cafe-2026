@@ -53,8 +53,8 @@ function AgregarVendedor(){
         return;
     }
 
-    if (cedula.length !== 8) {
-        mostrarError("cedula", "La cédula debe tener 8 dígitos.");
+    if (!/^\d{8}$/.test(cedula)) {
+        mostrarError("cedula", "La cédula debe contener 8 números.");
         return;
     }
 
@@ -108,13 +108,26 @@ function ListarVendedores(){
 
 function InicializarVendedor(){
   
+    limpiarError("codigo");
+    limpiarError("nombre");
+    limpiarError("cedula");
+    limpiarError("lista-vendedores");
+
     document.getElementById("codigo").value = "";
     document.getElementById("cedula").value = "";
     document.getElementById("nombre").value = "";
     document.getElementById("codigo").disabled = false;
    
     document.getElementById("codigo").focus();
-    document.getElementById("codigo").value = vendedores.length+1;
+    let mayorCodigo = 0;
+
+    for (let unVendedor of vendedores) {
+        if (Number(unVendedor.codigo) > mayorCodigo) {
+            mayorCodigo = Number(unVendedor.codigo);
+        }
+    }
+
+    document.getElementById("codigo").value = mayorCodigo + 1;
 }
 
 function ModificarVendedor(){
@@ -139,17 +152,19 @@ function ModificarVendedor(){
         hayError = true;
     }
 
-    if (cedula === "") {
-        mostrarError("cedula", "La cédula es obligatoria.");
-        hayError = true;
-    }
-
-    if (hayError) {
+    if (!/^\d{8}$/.test(cedula)) {
+        mostrarError("cedula", "La cédula debe contener 8 números.");
         return;
     }
 
-    if (cedula.length !== 8) {
-        mostrarError("cedula", "La cédula debe tener 8 dígitos.");
+    let vendedorConCedula = BuscarVendedorCedula(cedula);
+
+    if (vendedorConCedula != null && vendedorConCedula.codigo != codigoSeleccionado) {
+        mostrarError("cedula", "Ya existe un vendedor con esa cédula.");
+        return;
+    }
+
+    if (hayError) {
         return;
     }
 
@@ -241,6 +256,9 @@ document.getElementById("botones-vendedores").addEventListener("click", function
 
 });
 
+document.getElementById("cedula").addEventListener("input", function(evento) {
+    evento.target.value = evento.target.value.replace(/\D/g, "");
+});
 document.getElementById("lista-vendedores").addEventListener("change", SeleccionarVendedor);
 
 CargoDatosVendedor();
