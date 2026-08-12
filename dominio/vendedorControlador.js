@@ -171,10 +171,25 @@ function EliminarVendedor(){
     alert("El vendedor se elimino correctamente");
 }
 
-document.getElementById("btnAgregar").addEventListener("click", AgregarVendedor);
-document.getElementById("btnModificar").addEventListener("click", ModificarVendedor);
-document.getElementById("btnEliminar").addEventListener("click", EliminarVendedor);
-document.getElementById("btnLimpiar").addEventListener("click", InicializarVendedor);
+document.getElementById("botones-vendedores").addEventListener("click", function(evento) {
+
+    if (evento.target.id === "btnAgregar") {
+        AgregarVendedor();
+    }
+
+    if (evento.target.id === "btnModificar") {
+        ModificarVendedor();
+    }
+
+    if (evento.target.id === "btnEliminar") {
+        EliminarVendedor();
+    }
+
+    if (evento.target.id === "btnLimpiar") {
+        InicializarVendedor();
+    }
+
+});
 
 document.getElementById("lista-vendedores").addEventListener("change", SeleccionarVendedor);
 

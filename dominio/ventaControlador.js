@@ -348,9 +348,21 @@ function EliminarVenta(){
     alert("Se ha eliminado correctamente su venta");
 }
 
-document.getElementById("btnAgregar").addEventListener("click", AgregarVenta);
-document.getElementById("btnEliminar").addEventListener("click", EliminarVenta);
-document.getElementById("btnLimpiar").addEventListener("click", InicializarVenta);
+document.getElementById("botones-ventas").addEventListener("click", function(evento) {
+
+    if (evento.target.id === "btnAgregar") {
+        AgregarVenta();
+    }
+
+    if (evento.target.id === "btnEliminar") {
+        EliminarVenta();
+    }
+
+    if (evento.target.id === "btnLimpiar") {
+        InicializarVenta();
+    }
+
+});
 
 document.getElementById("codigo-producto").addEventListener("change", CargarPrecioProducto);
 document.getElementById("cantidad").addEventListener("blur", CalculoTotal);
