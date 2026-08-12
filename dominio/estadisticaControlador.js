@@ -30,6 +30,7 @@ function CargoDatosEstadisticas(){
 
 function TotalRecaudado(){
     let total = 0;
+
     for (const unaVenta of ventas) {
         total = total + unaVenta.total;
     }
@@ -53,12 +54,14 @@ function ProductosConStock(){
 function ProductoMasVendido(){
     let mayor = 0;
     let objMayor;
+
     for (const unProducto of productos) {
         if(unProducto.cantVendidos > mayor){
             mayor = unProducto.cantVendidos;
             objMayor = unProducto;
         }
     }
+
     if (objMayor) {
       document.getElementById('masVendido').value = objMayor.nombre
     + " con " + objMayor.cantVendidos + " unidades"; 
@@ -69,25 +72,19 @@ function ProductoMasVendido(){
 
 function MejorVendedor(){
     let mayor = 0;
-    let cant = 0;
     let objMayor;
+
     for (const unVendedor of vendedores) {
         if(unVendedor.cantVentas > mayor){
             mayor = unVendedor.cantVentas;
             objMayor = unVendedor;
         }
     }
-       if (objMayor) {
 
-        for(let unaVenta of ventas){
-            if(unaVenta.vendedor.codigo == objMayor.codigo){
-                cant++;
-            }
-        }
-
-      document.getElementById('mejorVendedor').value = objMayor.nombre
-    + " con " + cant + " ventas";  
-    }else{
+    if (objMayor) {
+        document.getElementById('mejorVendedor').value =
+        objMayor.nombre + " con " + objMayor.cantVentas + " ventas";
+    } else {
         document.getElementById('mejorVendedor').value = "Sin ventas";
     }
    
