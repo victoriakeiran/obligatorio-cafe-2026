@@ -123,9 +123,33 @@ function ModificarVendedor(){
     let nombre = document.getElementById("nombre").value;
     let cedula = document.getElementById("cedula").value;
 
-   
-    if(codigoSeleccionado == "" || nombre == "" || cedula == ""){
-        alert("Debe seleccionar un vendedor para modificar");
+    limpiarError("lista-vendedores");
+    limpiarError("nombre");
+    limpiarError("cedula");
+
+    let hayError = false;
+
+    if (codigoSeleccionado === "") {
+        mostrarError("lista-vendedores", "Debe seleccionar un vendedor para modificar.");
+        hayError = true;
+    }
+
+    if (nombre === "") {
+        mostrarError("nombre", "El nombre es obligatorio.");
+        hayError = true;
+    }
+
+    if (cedula === "") {
+        mostrarError("cedula", "La cédula es obligatoria.");
+        hayError = true;
+    }
+
+    if (hayError) {
+        return;
+    }
+
+    if (cedula.length !== 8) {
+        mostrarError("cedula", "La cédula debe tener 8 dígitos.");
         return;
     }
 
@@ -165,14 +189,16 @@ function EliminarVendedor(){
     let codigoSeleccionado = document.getElementById("lista-vendedores").value;
     let posicionVendedor = -1;
 
-    if(codigoSeleccionado == ""){
-        alert("Debe seleccionar un vendedor para eliminar");
+    limpiarError("lista-vendedores");
+
+    if (codigoSeleccionado === "") {
+        mostrarError("lista-vendedores", "Debe seleccionar un vendedor para eliminar.");
         return;
     }
 
-        for (let venta of ventas){
+    for (let venta of ventas){
         if (venta.vendedor.codigo == codigoSeleccionado) {
-            alert("No se puede eliminar un vendedor que tiene ventas");
+            mostrarError("lista-vendedores", "No se puede eliminar un vendedor que tiene ventas.");
             return;
         }
     }
@@ -183,12 +209,9 @@ function EliminarVendedor(){
         }
     }
 
-
-
     if(posicionVendedor != -1){
         vendedores.splice(posicionVendedor, 1);
     }
-
 
     const LaMemoria = new Memoria();
     LaMemoria.escribir('vendedores', vendedores);

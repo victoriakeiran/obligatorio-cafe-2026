@@ -276,46 +276,6 @@ function SeleccionarVenta(){
     }
 }
 
-function ModificarVenta(){
-    
-    let codigoSeleccionado = document.getElementById("lista-ventas").value;
-    let fecha = document.getElementById("fecha").value;
-    let codigoVendedor = document.getElementById("codigo-vendedor").value;
-    let codigoProducto = document.getElementById("codigo-producto").value;
-    let cantidad = parseInt(document.getElementById("cantidad").value);
-    let total = parseInt(document.getElementById("total").value);
-
-    
-    if(codigoSeleccionado == "" || fecha == "" || codigoVendedor == "" || codigoProducto == ""){
-        alert("Debe ingresar todos los campos!");
-        return;
-    }
-    if(isNaN(cantidad) || isNaN(total)){
-        alert("Los valores ingresados no son correctos!");
-        return;
-    }
-
-    let unProducto = BuscarProducto(codigoProducto);
-   
-    let unVendedor = BuscarVendedor(codigoVendedor);
-
-
-    
-    let unVenta = BuscarVenta(codigoSeleccionado);
-
-    unVenta.fecha = fecha;
-    unVenta.vendedor = unVendedor;
-    unVenta.producto = unProducto;
-    unVenta.cantidad = cantidad;
-    unVenta.total = total;
-
-    const LaMemoria = new Memoria();
-    LaMemoria.escribir('ventas', ventas);
-    
-    InicializarVenta();
-    ListarVentas();
-}
-
 function BuscarVenta(pCodigo){
     for (let objVenta of ventas) {
         if(objVenta.codigo == pCodigo){
@@ -325,15 +285,14 @@ function BuscarVenta(pCodigo){
     return null;
 }
 
-
 function EliminarVenta(){
-    
     let codigoSeleccionado = document.getElementById("lista-ventas").value;
     let posicionVenta = -1;
 
-  
-    if(codigoSeleccionado == ""){
-        alert("Debe seleccionar una Venta!");
+    limpiarError("lista-ventas");
+
+    if (codigoSeleccionado === "") {
+        mostrarError("lista-ventas", "Debe seleccionar una venta.");
         return;
     }
 

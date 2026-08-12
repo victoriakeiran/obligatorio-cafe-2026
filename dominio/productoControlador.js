@@ -140,12 +140,39 @@ function ModificarProducto(){
     let precio = parseInt(document.getElementById("precio").value);
     let stock = parseInt(document.getElementById("stock").value);
 
-    if(codigoSeleccionado == "" || nombre == "" || descripcion == ""){
-        alert("Debe seleccionar un producto para modificar");
-        return;
+    limpiarError("nombre");
+    limpiarError("descripcion");
+    limpiarError("precio");
+    limpiarError("stock");
+
+    let hayError = false;
+
+    if (codigoSeleccionado === "") {
+        mostrarError("nombre", "Debe seleccionar un producto para modificar.");
+        hayError = true;
     }
-    if(isNaN(precio) || isNaN(stock)){
-        alert("Los valores ingresados no son correctos!");
+
+    if (nombre === "") {
+        mostrarError("nombre", "El nombre es obligatorio.");
+        hayError = true;
+    }
+
+    if (descripcion === "") {
+        mostrarError("descripcion", "La descripción es obligatoria.");
+        hayError = true;
+    }
+
+    if (isNaN(precio) || precio <= 0) {
+        mostrarError("precio", "El precio debe ser mayor a 0.");
+        hayError = true;
+    }
+
+    if (isNaN(stock) || stock < 0) {
+        mostrarError("stock", "El stock no puede ser negativo.");
+        hayError = true;
+    }
+
+    if (hayError) {
         return;
     }
    
@@ -177,16 +204,17 @@ function EliminarProducto(){
     
     let codigoSeleccionado = document.getElementById("lista-productos").value;
     let posicionProducto = -1;
+
+    limpiarError("lista-productos");
   
-    if(codigoSeleccionado == ""){
-        alert("Debe seleccionar un Producto!");
+    if (codigoSeleccionado === "") {
+        mostrarError("lista-productos", "Debe seleccionar un producto.");
         return;
     }
     
     for (let venta of ventas){
-        console.log(venta);
         if (venta.producto.codigo == codigoSeleccionado) {
-            alert("No se puede eliminar un producto que tiene ventas");
+            mostrarError("lista-productos", "No se puede eliminar un producto que tiene ventas.");
             return;
         }
     }
