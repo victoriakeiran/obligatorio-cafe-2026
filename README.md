@@ -72,7 +72,7 @@ En `dominio/servicios/` se encuentran:
 
 - `Memoria.js`: lectura y escritura de información en LocalStorage.
 - `ClimaApi.js`: comunicación con la API pública Open-Meteo.
-- `Ui.js`: manejo de mensajes de interfaz utilizados en la sección Clima.
+- `climaUi.js`: manejo de mensajes de interfaz utilizados en la sección Clima.
 
 ### Módulos
 
@@ -134,123 +134,80 @@ Durante esta etapa se incorporaron mejoras en la interfaz y la interacción con 
 
 ## Entrega 3 - Aplicación dinámica
 
-El proyecto ya incorpora varios contenidos correspondientes a esta etapa:
+Durante esta etapa se incorporaron mejoras relacionadas con aplicaciones dinámicas, servicios externos, persistencia, accesibilidad y usabilidad.
 
-- Consumo de una API pública.
-- Uso de `fetch`.
-- Uso de `async` / `await`.
-- Manejo de errores mediante `try`, `catch` y `finally`.
-- Clase `Ciudad`.
-- Consulta del clima actual para distintas ciudades de Uruguay.
-- Renderizado dinámico de temperatura, sensación térmica, humedad, viento y estado del clima.
-- Mensajes visuales ante errores en la consulta externa.
+### Fetch, API pública y Async/Await
 
-La información meteorológica se obtiene mediante la API pública **Open-Meteo**.
+Se incorporó una sección de Clima que consume la API pública Open-Meteo.
 
----
+La consulta se realiza mediante:
 
-## Funcionalidades principales
+- `fetch`
+- `async`
+- `await`
 
-### Productos
+La lógica de comunicación con la API se encuentra separada en `ClimaApi.js`.
 
-Permite:
+También se implementó manejo de errores mediante `try`, `catch` y `finally`.
 
-- Agregar productos.
-- Modificar productos.
-- Eliminar productos.
-- Listar productos.
+Cuando no existe conexión o la API no responde correctamente:
 
-Incluye controles de campos obligatorios, código único, precio, stock y restricciones para eliminar productos asociados a ventas.
-
-### Vendedores
-
-Permite:
-
-- Agregar vendedores.
-- Modificar vendedores.
-- Eliminar vendedores.
-- Listar vendedores.
-
-Incluye controles de campos obligatorios, código único, cédula y restricciones para eliminar vendedores asociados a ventas.
-
-### Ventas
-
-Permite:
-
-- Registrar ventas.
-- Eliminar ventas.
-- Listar ventas.
-
-Al registrar una venta:
-
-- Se valida el vendedor seleccionado.
-- Se valida el producto seleccionado.
-- Se controla la cantidad.
-- Se verifica el stock disponible.
-- Se calcula el total.
-- Se descuenta el stock.
-- Se actualiza la cantidad vendida del producto.
-- Se actualiza la cantidad de ventas del vendedor.
-
-Al eliminar una venta, se restituyen los valores correspondientes de stock y estadísticas.
-
-### Estadísticas
-
-La aplicación muestra:
-
-- Total recaudado.
-- Producto más vendido.
-- Mejor vendedor.
-- Productos con stock disponible.
+- Se informa el problema al usuario.
+- El resto de la aplicación continúa funcionando.
+- El botón de consulta vuelve a su estado normal.
+- Una nueva consulta funciona correctamente cuando se recupera la conexión.
 
 ### Clima
 
-Permite consultar el clima actual de distintas ciudades de Uruguay utilizando Open-Meteo.
+Se incorporó la clase `Ciudad` y una lista de ciudades de Uruguay.
 
-Se muestran:
+La sección permite consultar:
 
-- Estado del clima.
+- Estado actual del clima.
 - Temperatura.
 - Sensación térmica.
 - Humedad.
 - Velocidad del viento.
 - Hora de actualización.
 
----
+La interfaz muestra un estado de carga mientras se realiza la consulta y mensajes visuales cuando ocurre un error.
 
-## Persistencia
+### Mejoras de LocalStorage
 
-La información de productos, vendedores y ventas se guarda en el navegador mediante `LocalStorage`.
+Se mejoró el servicio `Memoria` utilizado para almacenar y recuperar los datos de la aplicación.
 
-El servicio `Memoria` centraliza la lectura y escritura de estos datos utilizando `JSON.parse()` y `JSON.stringify()`.
+Las operaciones de lectura y escritura ahora utilizan `try/catch` para evitar que un error en LocalStorage interrumpa el funcionamiento de la aplicación.
 
----
+La función `leer()` devuelve `null` si ocurre un problema durante la lectura o conversión de los datos.
 
-## Estado actual
+La función `escribir()` devuelve `true` cuando la información se guarda correctamente y `false` cuando ocurre un error.
 
-Actualmente el proyecto cuenta con:
+Se comprobó que Productos, Vendedores y Ventas continúan almacenándose correctamente luego de recargar la aplicación.
 
-- Estructura modular.
-- Clases JavaScript.
-- Separación de responsabilidades.
-- LocalStorage.
-- Delegación de eventos.
-- Validaciones visuales.
-- Diseño responsive.
-- Bootstrap.
-- Mejoras básicas de accesibilidad.
-- Integración con una API pública mediante Fetch y Async/Await.
+### Accesibilidad
 
----
+Se realizaron mejoras básicas de accesibilidad, entre ellas:
 
-## Próximas mejoras
+- Uso de `lang="es"` en los documentos HTML.
+- Asociación correcta entre `label` e `id` en los formularios.
+- Uso de textos alternativos en imágenes.
+- Eliminación de eventos inline en HTML.
+- Mensajes de error asociados visualmente a los campos correspondientes.
 
-De acuerdo con las siguientes etapas del Taller, quedan por profundizar:
+### Usabilidad
 
-- Accesibilidad y usabilidad.
-- Seguridad básica y prevención de XSS.
-- Optimización final del código.
-- SEO.
-- Publicación de la aplicación.
-- Documentación final.
-- Preparación de la defensa oral.
+Se revisó el comportamiento de Productos, Vendedores y Ventas desde el punto de vista del usuario.
+
+Se comprobó:
+
+- Visualización clara de errores en los formularios.
+- Limpieza de errores al reiniciar los formularios.
+- Validación de códigos repetidos.
+- Validación de precios, stock, cantidades y cédula.
+- Control de stock antes de registrar una venta.
+- Recuperación del stock al eliminar una venta.
+- Persistencia de los datos después de recargar.
+- Mensajes claros cuando una operación no puede realizarse.
+- Manejo visual de errores al consultar la API de Clima.
+
+Luego de las pruebas realizadas, las funcionalidades de Productos, Vendedores, Ventas, Estadísticas y Clima continúan funcionando correctamente.
