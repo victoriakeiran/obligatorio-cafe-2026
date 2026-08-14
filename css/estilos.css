@@ -35,11 +35,21 @@ h1 {
 .fondo {
     margin: 0;
     min-height: 100vh;
+    position: relative;
+}
+
+.fondo::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     background-image: url(../Imagenes/Fondo.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 /* ENCABEZADO Y NAVEGACIÓN */
@@ -73,10 +83,14 @@ h1 {
 
 /* BOTONES */
 
+/* Reemplazá tus reglas de .botones y .boton por estas: */
+
 .botones {
-    margin-top: 10px;
-    border-radius: 0%;
-    text-align: center;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Por si el texto no entra en pantallas pequeñas */
 }
 
 .botones input:hover {
@@ -87,13 +101,13 @@ h1 {
     border: none;
     border-radius: 8px;
     padding: 10px 16px;
-    margin: 5px;
-    margin-right: 3%;
+    margin: 0;           /* <--- Quitamos los margins viejos */
     cursor: pointer;
     color: #000000;
     background-color: #F2EFE6;
     font-weight: bold;
-    width: 20%;
+    flex: 1;             /* <--- Hace que todos midan lo mismo sin deformarse */
+    min-width: 80px;
 }
 
 /* Boton inicio */
@@ -158,23 +172,24 @@ select {
     background-color: transparent;
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    flex: 1 1 400px;
-    max-width: 600px;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
 }
 
 .contenedorTarjeta {
     width: 90%;
-    max-width: 900px;
+    max-width: 600px;
     margin: 0 auto;
     text-align: center;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 2rem;
-    justify-content: center;
-    align-items: stretch;
-    flex-wrap: wrap;
 }
+
 
 /* CAFETERÍA */
 
@@ -311,6 +326,21 @@ select {
 }
 
 .menu-hamburguesa {
+    display: block;
+    background-color: #F2EFE6; /* Mismo tono beige que los botones de navegación */
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Suave sombra para destacar */
+}
+
+
+
+.menu-hamburguesa {
     display: none;
 }
 
@@ -340,7 +370,6 @@ select {
     /* Fondo */
     .fondo {
         min-height: 100vh;
-        background-attachment: scroll;
     }
     
     .home {
@@ -481,5 +510,46 @@ select {
         flex-direction: column;
         gap: 15px;
         align-items: center;
+    }
+}
+
+/* =========================
+   PANTALLAS GRANDES
+========================= */
+
+@media (min-width: 1200px) {
+
+    .encabezado {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .contenedorTarjeta {
+        width: 90%;
+        max-width: 850px; /* <--- Mantené el ancho corto en pantallas grandes */
+        margin: 0 auto;
+    }
+
+    /* Modifica o elimina esta parte para que la tarjeta ocupe todo el ancho disponible */
+    .tarjeta {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .contenedorCafeteria {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .contenedorCarteles {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .cartel {
+        width: 250px;
     }
 }
