@@ -143,8 +143,10 @@ function SeleccionarProducto(){
             document.getElementById("precio").value = objProducto.precio;
             document.getElementById("stock").value = objProducto.stock;
             document.getElementById("codigo").disabled = true;
+            break;
         }
     }
+
 }
 
 function ModificarProducto(){
@@ -236,9 +238,10 @@ function EliminarProducto(){
     }
    
     for (let pos = 0; pos < productos.length; pos++) {
-        if(productos[pos].codigo == codigoSeleccionado){
-            posicionProducto = pos;
-        }
+    if(productos[pos].codigo == codigoSeleccionado){
+        posicionProducto = pos;
+        break;
+    }
     }
 
     if(posicionProducto != -1){

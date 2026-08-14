@@ -88,8 +88,8 @@ function SeleccionarVendedor(){
             document.getElementById("codigo").value = objVendedor.codigo;
             document.getElementById("nombre").value = objVendedor.nombre;
             document.getElementById("cedula").value = objVendedor.cedula;
-             document.getElementById("codigo").disabled = true;
-
+            document.getElementById("codigo").disabled = true;
+            break;
         }
     }
 }
@@ -200,7 +200,6 @@ function BuscarVendedorCedula(pCedula){
 }
 
 function EliminarVendedor(){
-   
     let codigoSeleccionado = document.getElementById("lista-vendedores").value;
     let posicionVendedor = -1;
 
@@ -221,6 +220,7 @@ function EliminarVendedor(){
     for (let pos = 0; pos < vendedores.length; pos++) {
         if(vendedores[pos].codigo == codigoSeleccionado){
             posicionVendedor = pos;
+            break;
         }
     }
 

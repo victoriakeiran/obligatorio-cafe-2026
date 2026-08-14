@@ -64,6 +64,7 @@ function CargarPrecioProducto(){
     for (let objProducto of productos) {
         if(objProducto.codigo == codigoProducto){
             document.getElementById('precio-producto').value = objProducto.precio;
+            break;
         }
     }
 }
@@ -72,6 +73,7 @@ function ActualizarStock(pCodigoProducto, pCantidad){
     for (const unProducto of productos) {
         if(unProducto.codigo == pCodigoProducto){
             unProducto.stock = unProducto.stock - pCantidad;
+            break;
         }
     }
 }
@@ -80,6 +82,7 @@ function DevolverStock(pCodigoProducto, pCantidad){
     for (const unProducto of productos) {
         if(unProducto.codigo == pCodigoProducto){
             unProducto.stock = unProducto.stock + pCantidad;
+            break;
         }
     }
 }
@@ -88,6 +91,7 @@ function ActualizarCantidadVendidos(pCodigoProducto, pCantidad){
     for (const unProducto of productos) {
         if(unProducto.codigo == pCodigoProducto){
             unProducto.cantVendidos = unProducto.cantVendidos + pCantidad;
+            break;
         }
     }
 }
@@ -96,6 +100,7 @@ function DevolverCantidadVendidos(pCodigoProducto, pCantidad){
     for (const unProducto of productos) {
         if(unProducto.codigo == pCodigoProducto){
             unProducto.cantVendidos = unProducto.cantVendidos - pCantidad;
+            break;
         }
     }
 }
@@ -104,6 +109,7 @@ function DevolverCantidadVentas(pCodigoVendedor){
     for (const unVendedor of vendedores) {
         if(unVendedor.codigo == pCodigoVendedor){
             unVendedor.cantVentas -= 1;
+            break;
         }
     }
 }
@@ -112,6 +118,7 @@ function ActualizarCantidadVentas(pCodigoVendedor){
     for (const unVendedor of vendedores) {
         if(unVendedor.codigo == pCodigoVendedor){
             unVendedor.cantVentas += 1;
+            break;
         }
     }
 }
@@ -285,6 +292,7 @@ function SeleccionarVenta(){
             CargarPrecioProducto();
             document.getElementById("cantidad").value = objVenta.cantidad;
             document.getElementById("total").value = objVenta.total;
+            break;
         }
     }
 }
@@ -312,10 +320,12 @@ function EliminarVenta(){
     let unaVenta = BuscarVenta(codigoSeleccionado);
 
     for (let pos = 0; pos < ventas.length; pos++) {
-        if(ventas[pos].codigo == codigoSeleccionado){
-            posicionVenta = pos;
-        }
+    if (ventas[pos].codigo == codigoSeleccionado) {
+        posicionVenta = pos;
+        break;
     }
+    }
+
     if(posicionVenta != -1){
         ventas.splice(posicionVenta, 1);
     }
