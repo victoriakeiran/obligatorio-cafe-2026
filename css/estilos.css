@@ -16,7 +16,7 @@ h1 {
 .home {
     margin: 0;
     height: 100vh;
-    background-image: url(../Imagenes/home.jpeg);
+    background-image: url(../Imagenes/home.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -314,17 +314,22 @@ select {
         background-attachment: scroll;
     }
     
-    .home {
-        flex-direction: column;
-        gap: 15px;
-        min-height: 100vh;
-        background-attachment: scroll;
-    }
+   .home {
+    flex-direction: column;
+    gap: 15px;
+    height: auto;
+    min-height: 100vh;
+    background-attachment: scroll;
+    background-image: url(../Imagenes/home-mobile.png);
+}
 
     .home button {
-        width: 200px;
-        height: 55px;
+    width: 150px;
+    height: 45px;
+    font-size: 16px;
+    margin-top: 0;
     }
+
 
     /* Encabezado */
     .encabezado {
@@ -420,15 +425,6 @@ select {
         display: block;
     }
 
-    /* BOTÓN HOME EN CELULAR */
-
-    .home button {
-        margin-top: 20px;
-        margin-right: 0;
-        width: 80%;
-        max-width: 250px;
-    }
-
     /* CLIMA EN CELULAR */
 
     .panel {
@@ -450,5 +446,12 @@ select {
     #btn-consultar {
         width: 100%;
         margin-top: 15px;
+    }
+
+    .botones-home {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
     }
 }
