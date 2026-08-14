@@ -10,7 +10,10 @@
 </head>
 <body class="fondo">
     <header class="encabezado">
+    <div class="encabezado-mobile">
         <h1>Obligatorio Café</h1>
+        <button class="menu-hamburguesa" type="button">☰</button>
+    </div>    
         <nav class="btnPrincipales">
             <a href="./cafeteria.html">Principal</a>
             <a href="./vendedores.html">Vendedores</a>
@@ -61,6 +64,10 @@
             <small id="error-lista-productos" class="error"></small>
         </section>
     </main>
-
+<script>
+    document.querySelector(".menu-hamburguesa").addEventListener("click", function() {
+        document.querySelector(".btnPrincipales").classList.toggle("menu-abierto");
+    });
+</script>
 </body>
 </html>
