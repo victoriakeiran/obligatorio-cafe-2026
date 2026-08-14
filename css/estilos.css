@@ -319,23 +319,22 @@ select {
 @media (max-width: 600px) {
 
     .menu-hamburguesa {
-    display: block;
+        display: block;
     }
 
     .btnPrincipales {
-    display: none;
+        display: none;
     }
 
     .btnPrincipales.menu-abierto {
-    display: flex;
-    flex-direction: column;
+        display: flex;
+        flex-direction: column;
     }
-
     .encabezado-mobile {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
     }
 
     /* Fondo */
@@ -344,22 +343,21 @@ select {
         background-attachment: scroll;
     }
     
-   .home {
-    flex-direction: column;
-    gap: 15px;
-    height: auto;
-    min-height: 100vh;
-    background-attachment: scroll;
-    background-image: url(../Imagenes/home-mobile.png);
-}
-
-    .home button {
-    width: 150px;
-    height: 45px;
-    font-size: 16px;
-    margin-top: 0;
+    .home {
+        flex-direction: column;
+        gap: 15px;
+        height: auto;
+        min-height: 100vh;
+        background-attachment: scroll;
+        background-image: url(../Imagenes/home-mobile.png);
     }
 
+    .home button {
+        width: 150px;
+        height: 45px;
+        font-size: 16px;
+        margin-top: 0;
+    }
 
     /* Encabezado */
     .encabezado {
@@ -479,9 +477,9 @@ select {
     }
 
     .botones-home {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
     }
 }
