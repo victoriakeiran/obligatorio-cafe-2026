@@ -277,7 +277,7 @@ function AgregarVenta(){
 
     InicializarVenta();
     ListarVentas();
-    alert("Venta agregada correctamente");
+    MostrarModal("Venta agregada correctamente");
 }
 
 function SeleccionarVenta(){
@@ -343,7 +343,7 @@ function EliminarVenta(){
 
     InicializarVenta();
     ListarVentas();
-    alert("Se ha eliminado correctamente su venta");
+    MostrarModal("Se ha eliminado correctamente su venta");
 }
 
 document.getElementById("botones-ventas").addEventListener("click", function(evento) {
