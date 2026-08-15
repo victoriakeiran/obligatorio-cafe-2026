@@ -77,7 +77,7 @@ function AgregarVendedor(){
 
     InicializarVendedor();
     ListarVendedores();
-    alert("Vendedor agregado correctamente");
+    MostrarModal("Vendedor agregado correctamente");
 }
 
 function SeleccionarVendedor(){
@@ -178,7 +178,7 @@ function ModificarVendedor(){
     
     InicializarVendedor();
     ListarVendedores();
-    alert("Se ha modificado correctamente su vendedor");
+    MostrarModal("Se ha modificado correctamente su vendedor");
 }
 
 function BuscarVendedor(pCodigo){
@@ -233,7 +233,7 @@ function EliminarVendedor(){
 
     InicializarVendedor();
     ListarVendedores();
-    alert("El vendedor se elimino correctamente");
+    MostrarModal("El vendedor se elimino correctamente");
 }
 
 document.getElementById("botones-vendedores").addEventListener("click", function(evento) {

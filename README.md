@@ -40,6 +40,8 @@ Los datos de productos, vendedores y ventas se almacenan mediante `LocalStorage`
 - API pública Open-Meteo
 - Git
 - GitHub
+- WebP
+- Netlify
 
 ---
 
@@ -211,3 +213,69 @@ Se comprobó:
 - Manejo visual de errores al consultar la API de Clima.
 
 Luego de las pruebas realizadas, las funcionalidades de Productos, Vendedores, Ventas, Estadísticas y Clima continúan funcionando correctamente.
+
+## Entrega 4 - Calidad profesional
+
+Durante esta etapa se incorporaron mejoras relacionadas con seguridad, optimización, SEO y publicación de la aplicación.
+
+### Seguridad básica y prevención de XSS
+
+Se revisó la forma en que la aplicación muestra los datos ingresados por el usuario.
+
+Para evitar la ejecución de código HTML o JavaScript no deseado, se utiliza `textContent` y creación de elementos mediante el DOM en lugar de insertar contenido mediante `innerHTML`.
+
+Se realizaron pruebas ingresando código HTML en los formularios y se comprobó que la aplicación lo muestra como texto, sin ejecutarlo.
+
+De esta manera se implementa una medida básica de prevención frente a ataques XSS.
+
+### SEO
+
+Se revisaron todas las páginas HTML del proyecto y se incorporaron elementos básicos para mejorar su identificación y posicionamiento:
+
+- `meta charset`
+- `meta viewport`
+- `meta description`
+- títulos específicos mediante la etiqueta `title`
+- textos alternativos mediante el atributo `alt` en las imágenes
+
+Cada sección posee un título y una descripción relacionados con su contenido.
+
+### Optimización
+
+Se optimizaron las imágenes utilizadas por la aplicación para reducir el peso del sitio y mejorar los tiempos de carga.
+
+Las imágenes principales fueron convertidas del formato PNG al formato WebP, manteniendo una buena calidad visual y reduciendo considerablemente el tamaño de los archivos.
+
+También se ajustó la resolución de las imágenes de productos para adaptarlas mejor al tamaño en que se muestran dentro de la aplicación.
+
+Se verificó el funcionamiento de las nuevas imágenes tanto en escritorio como en dispositivos móviles.
+
+El archivo `.gitignore` se encuentra configurado para evitar incorporar al repositorio archivos innecesarios generados por macOS, Visual Studio Code y archivos de registro.
+
+### Publicación preliminar
+
+La aplicación se encuentra publicada en Internet mediante Netlify.
+
+Netlify está conectado al repositorio de GitHub, permitiendo realizar el despliegue del proyecto a partir del código almacenado en el repositorio.
+
+Se comprobó el correcto funcionamiento de las diferentes secciones del sistema en la versión publicada.
+
+## Correcciones finales y pruebas funcionales
+
+Se realizó una revisión funcional completa de las principales secciones de la aplicación:
+
+- Productos
+- Vendedores
+- Ventas
+- Estadísticas
+- Clima
+
+Durante las pruebas se verificaron altas, modificaciones, eliminaciones, validaciones, persistencia en LocalStorage, control de stock y manejo de errores.
+
+### Corrección realizada
+
+Durante la revisión de Estadísticas se detectó que, cuando dos o más productos tenían la misma cantidad máxima de unidades vendidas, la aplicación mostraba solamente uno.
+
+Se modificó la función encargada de calcular el producto más vendido para permitir almacenar y mostrar todos los productos que se encuentren empatados con la mayor cantidad de ventas.
+
+Luego de la corrección se volvió a probar la funcionalidad y se comprobó que, en caso de empate, se muestran correctamente todos los productos más vendidos.

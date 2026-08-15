@@ -10,7 +10,10 @@
 </head>
 <body class="fondo">
     <header class="encabezado">
+        <div class="encabezado-mobile">
         <h1>Obligatorio Café</h1>
+    <button class="menu-hamburguesa" type="button">☰</button>
+</div>
         <nav class="btnPrincipales">
             <a href="./productos.html">Productos</a>
             <a href="./vendedores.html">Vendedores</a>
@@ -24,7 +27,7 @@
         <section class="contenedorCarteles tarjetaCafeteria">
             <div class="cartel">
                 <div>
-                    <img src="./imagenes/cafe-en-grano.png" alt="Cafe en Grano">
+                    <img src="./imagenes/cafe-en-grano.webp" alt="Cafe en Grano">
                 </div>
                 <div class="contenido">
                     <h2>Café en Grano</h2>
@@ -33,7 +36,7 @@
 
             <div class="cartel">
                 <div>
-                    <img src="./imagenes/cafe-molido.png" alt="Cafe Molido">
+                    <img src="./imagenes/cafe-molido.webp" alt="Cafe Molido">
                 </div>
                 <div class="contenido">
                     <h2>Café Molido</h2>
@@ -42,7 +45,7 @@
 
             <div class="cartel">
                 <div>
-                    <img src="./imagenes/cafetera-italiana.png" alt="Cafetera Italiana">
+                    <img src="./imagenes/cafetera-italiana.webp" alt="Cafetera Italiana">
                 </div>
                 <div class="contenido">
                     <h2>Cafetera Italiana</h2>
@@ -51,7 +54,7 @@
 
             <div class="cartel">
                 <div>
-                    <img src="./imagenes/cafetera-prensa.png" alt="Cafetera Prensa">
+                    <img src="./imagenes/cafetera-prensa.webp" alt="Cafetera Prensa">
                 </div>
                 <div class="contenido">
                     <h2>Cafetera Prensa</h2>
@@ -60,7 +63,7 @@
 
             <div class="cartel">
                 <div class="grid-item">
-                    <img src="./imagenes/capsulas.png" alt="Capsulas">
+                    <img src="./imagenes/capsulas.webp" alt="Capsulas">
                 </div>
                 <div class="contenido">
                     <h2>Capsulas</h2>
@@ -69,7 +72,7 @@
 
             <div class="cartel">
                 <div>
-                    <img src="./imagenes/pack-de-te.png" alt="Pack de Té">
+                    <img src="./imagenes/pack-de-te.webp" alt="Pack de Té">
                 </div>
                 <div class="contenido">
                     <h2>Pack de Té</h2>
@@ -78,7 +81,7 @@
 
             <div class="cartel">
                 <div>
-                    <img src="./imagenes/pack-productos.png" alt="Pack Productos">
+                    <img src="./imagenes/pack-productos.webp" alt="Pack Productos">
                 </div>
                 <div class="contenido">
                     <h2>Pack de Productos</h2>
@@ -87,5 +90,10 @@
 
         </section>
     </main>
+    <script>
+        document.querySelector(".menu-hamburguesa").addEventListener("click", function() {
+        document.querySelector(".btnPrincipales").classList.toggle("menu-abierto");
+    });
+</script>
 </body>
 </html>
