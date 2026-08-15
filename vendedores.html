@@ -10,7 +10,10 @@
 </head>
 <body class="fondo">
     <header class="encabezado">
+        <div class="encabezado-mobile">
         <h1>Obligatorio Café</h1>
+    <button class="menu-hamburguesa" type="button">☰</button>
+</div>
         <nav class="btnPrincipales">
             <a href="./cafeteria.html">Principal</a>
             <a href="./productos.html">Productos</a>
@@ -54,6 +57,39 @@
             <small id="error-lista-vendedores" class="error"></small>
         </section>
     </main>
+    <div id="modal-mensaje" class="modal-mensaje">
+    <div class="modal-contenido">
+        <div class="modal-icono">☕</div>
+        <h2>Obligatorio Café</h2>
+        <p id="texto-modal"></p>
+        <button id="btnCerrarModal" class="boton" type="button">Aceptar</button>
+    </div>
+</div>
+<script>
+    
+    document.querySelector(".menu-hamburguesa").addEventListener("click", function() {
+    document.querySelector(".btnPrincipales").classList.toggle("menu-abierto");
+});
+    function MostrarModal(mensaje) {
+        document.getElementById("texto-modal").textContent = mensaje;
+        document.getElementById("modal-mensaje").classList.add("mostrar");
+    }
+
+    function CerrarModal() {
+        document.getElementById("modal-mensaje").classList.remove("mostrar");
+    }
+
+    document.getElementById("btnCerrarModal").addEventListener("click", CerrarModal);
+
+    document.addEventListener("keydown", function(event) {
+    if (
+        event.key === "Enter" &&
+        document.getElementById("modal-mensaje").classList.contains("mostrar")
+    ) {
+        CerrarModal();
+    }
+    });
+</script>
 
 </body>
 </html>

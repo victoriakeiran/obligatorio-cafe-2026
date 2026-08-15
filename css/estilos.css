@@ -16,7 +16,7 @@ h1 {
 .home {
     margin: 0;
     height: 100vh;
-    background-image: url(../Imagenes/home.png);
+    background-image: url(../imagenes/home.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -35,18 +35,7 @@ h1 {
 .fondo {
     margin: 0;
     min-height: 100vh;
-    position: relative;
-}
-
-.fondo::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-image: url(../Imagenes/Fondo.png);
+    background-image: url(../imagenes/fondo.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -342,6 +331,76 @@ select {
 
 .menu-hamburguesa {
     display: none;
+    background: transparent;
+    border: none;
+    padding: 5px;
+    margin: 0;
+    font-size: 28px;
+    line-height: 1;
+    color: #4f6b52;
+    cursor: pointer;
+    font-family: inherit;
+    appearance: none;
+}
+/* CARTEL DE CONFIRMACION */
+
+.modal-mensaje {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-mensaje.mostrar {
+    display: flex;
+}
+
+.modal-contenido {
+    background-color: #F2EFE6;
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.modal-icono {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.modal-contenido h2 {
+    color: #4f6b52;
+    margin-bottom: 15px;
+}
+
+.modal-contenido p {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.modal-contenido .boton {
+    background-color: #4f6b52;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-contenido .boton:hover {
+    background-color: #3d5540;
 }
 
 /* RESPONSIVE - CELULARES */
@@ -366,19 +425,31 @@ select {
         justify-content: space-between;
         width: 100%;
     }
+    .encabezado-mobile h1 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    }
 
     /* Fondo */
     .fondo {
         min-height: 100vh;
     }
     
-    .home {
-        flex-direction: column;
-        gap: 15px;
-        height: auto;
-        min-height: 100vh;
-        background-attachment: scroll;
-        background-image: url(../Imagenes/home-mobile.png);
+   .home {
+    flex-direction: column;
+    gap: 15px;
+    height: auto;
+    min-height: 100vh;
+    background-attachment: scroll;
+    background-image: url(../imagenes/home-mobile.webp);
+}
+
+    .home button {
+    width: 150px;
+    height: 45px;
+    font-size: 16px;
+    margin-top: 0;
     }
 
     .home button {

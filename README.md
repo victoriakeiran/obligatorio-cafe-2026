@@ -211,3 +211,37 @@ Se comprobó:
 - Manejo visual de errores al consultar la API de Clima.
 
 Luego de las pruebas realizadas, las funcionalidades de Productos, Vendedores, Ventas, Estadísticas y Clima continúan funcionando correctamente.
+
+## Entrega 4 - Calidad profesional
+
+En esta etapa se realizaron mejoras orientadas a la calidad, seguridad, optimización y experiencia de usuario de la aplicación.
+
+### Seguridad básica y prevención de XSS
+- Se revisó la manipulación de datos ingresados por el usuario.
+- Se utiliza `textContent` para mostrar contenido dinámico en el DOM, evitando insertar directamente contenido HTML ingresado por el usuario.
+- Se mantuvieron las validaciones implementadas en los formularios de productos, vendedores y ventas.
+
+### Optimización
+- Se optimizaron recursos gráficos utilizados en el sitio.
+- Se incorporaron imágenes en formato WebP para reducir el peso de los recursos y mejorar los tiempos de carga.
+- Se revisó la organización general del código y los recursos del proyecto.
+
+### SEO
+- Se incorporaron descripciones mediante etiquetas `meta description` en las páginas del sitio.
+- Se mantuvieron títulos descriptivos para identificar las diferentes secciones de la aplicación.
+
+### Responsive Design
+- Se mejoró la adaptación de la interfaz para dispositivos móviles.
+- Se implementó un menú hamburguesa propio utilizando HTML, CSS y JavaScript.
+- El menú permite mostrar y ocultar las opciones de navegación mediante manipulación de clases CSS.
+- Se realizaron ajustes específicos para mejorar la visualización del encabezado y la navegación en pantallas pequeñas.
+
+### Mejoras de usabilidad
+- Se reemplazaron los mensajes `alert()` del navegador por modales personalizados acordes al diseño visual de Obligatorio Café.
+
+### Publicación
+
+La aplicación se encuentra publicada en Internet mediante Netlify.
+
+URL del sitio:
+https://obligatoriocafe.netlify.app/
