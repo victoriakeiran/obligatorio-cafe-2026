@@ -1,11 +1,9 @@
-
 import { Producto } from "./clases/Producto.js";
 import { Memoria } from "./servicios/Memoria.js";
 import { mostrarError, limpiarError } from "./modulos/util.js";
 
 let productos = [];
 let ventas = [];
-
 
 function CargoDatosProductos(){
     const LaMemoria = new Memoria();
@@ -23,7 +21,6 @@ function CargoDatosProductos(){
 
     InicializarProducto();
     ListarProductos();
-    
 }
 
 function ListarProductos(){
@@ -39,7 +36,6 @@ function ListarProductos(){
 }
 
 function InicializarProducto(){
-
     limpiarError("codigo");
     limpiarError("nombre");
     limpiarError("descripcion");
@@ -64,10 +60,9 @@ function InicializarProducto(){
     }
 
     document.getElementById("codigo").value = mayorCodigo + 1;
-    }
+}
 
 function AgregarProducto(){
-   
     let codigo = document.getElementById("codigo").value;
     let nombre = document.getElementById("nombre").value;
     let descripcion = document.getElementById("descripcion").value;
@@ -80,7 +75,7 @@ function AgregarProducto(){
     limpiarError("precio");
     limpiarError("stock");
 
-      let hayError = false;
+    let hayError = false;
 
     if (codigo === "") {
         mostrarError("codigo", "El código es obligatorio.");
@@ -102,8 +97,8 @@ function AgregarProducto(){
     }
 
     if (isNaN(precio) || precio <= 0) {
-    mostrarError("precio", "El precio debe ser mayor a 0.");
-    hayError = true;
+        mostrarError("precio", "El precio debe ser mayor a 0.");
+        hayError = true;
     }
 
     if (isNaN(stock) || stock <= 0) {
@@ -116,9 +111,9 @@ function AgregarProducto(){
     }
 
     if (BuscarProducto(codigo) != null) {
-    mostrarError("codigo", "Ya existe un producto con ese código.");
-    return;
-}
+        mostrarError("codigo", "Ya existe un producto con ese código.");
+        return;
+    }
 
     let unProducto = new Producto(codigo, nombre, descripcion, precio, stock);
     productos.push(unProducto);
@@ -129,7 +124,6 @@ function AgregarProducto(){
     InicializarProducto();
     ListarProductos();
     MostrarModal("Producto agregado correctamente");
-
 }
 
 function SeleccionarProducto(){
@@ -146,11 +140,9 @@ function SeleccionarProducto(){
             break;
         }
     }
-
 }
 
 function ModificarProducto(){
-   
     let codigoSeleccionado = document.getElementById("lista-productos").value;
     let nombre = document.getElementById("nombre").value;
     let descripcion = document.getElementById("descripcion").value;
@@ -219,7 +211,6 @@ function BuscarProducto(pCodigo){
 }
 
 function EliminarProducto(){
-    
     let codigoSeleccionado = document.getElementById("lista-productos").value;
     let posicionProducto = -1;
 
@@ -238,10 +229,10 @@ function EliminarProducto(){
     }
    
     for (let pos = 0; pos < productos.length; pos++) {
-    if(productos[pos].codigo == codigoSeleccionado){
-        posicionProducto = pos;
-        break;
-    }
+        if(productos[pos].codigo == codigoSeleccionado){
+            posicionProducto = pos;
+            break;
+        }
     }
 
     if(posicionProducto != -1){

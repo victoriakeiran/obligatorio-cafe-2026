@@ -10,7 +10,6 @@ function CargoDatosVendedor(){
     vendedores = LaMemoria.leer('vendedores');
     ventas = LaMemoria.leer('ventas');
 
-    
     if(!vendedores){
         vendedores = [];
     }
@@ -23,7 +22,6 @@ function CargoDatosVendedor(){
 }
 
 function AgregarVendedor(){
-   
     let codigo = document.getElementById("codigo").value;
     let nombre = document.getElementById("nombre").value;
     let cedula = document.getElementById("cedula").value;
@@ -68,7 +66,6 @@ function AgregarVendedor(){
         return;
     }
     
-
     let unVendedor = new Vendedor(codigo, nombre, cedula);
     vendedores.push(unVendedor);
 
@@ -107,7 +104,6 @@ function ListarVendedores(){
 }
 
 function InicializarVendedor(){
-  
     limpiarError("codigo");
     limpiarError("nombre");
     limpiarError("cedula");
@@ -131,7 +127,6 @@ function InicializarVendedor(){
 }
 
 function ModificarVendedor(){
-   
     let codigoSeleccionado = document.getElementById("lista-vendedores").value;
     let nombre = document.getElementById("nombre").value;
     let cedula = document.getElementById("cedula").value;

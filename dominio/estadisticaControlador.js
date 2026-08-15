@@ -81,6 +81,7 @@ function ProductoMasVendido(){
         document.getElementById('masVendido').value = "Sin ventas";
     }
 }
+
 function MejorVendedor(){
     let mayor = 0;
     let objMayor;
@@ -91,14 +92,12 @@ function MejorVendedor(){
             objMayor = unVendedor;
         }
     }
-
     if (objMayor) {
         document.getElementById('mejorVendedor').value =
         objMayor.nombre + " con " + objMayor.cantVentas + " ventas";
     } else {
         document.getElementById('mejorVendedor').value = "Sin ventas";
     }
-   
 }
 
 CargoDatosEstadisticas();

@@ -146,7 +146,6 @@ function ListarVentas(){
 }
 
 function InicializarVenta(){
-
     limpiarError("codigo");
     limpiarError("fecha");
     limpiarError("codigo-vendedor");
@@ -181,7 +180,7 @@ function InicializarVenta(){
     }
 
     document.getElementById("codigo").value = mayorCodigo + 1;
-    }
+}
 
 function BuscarProducto(pCodigo){
     for (let objProducto of productos) {
@@ -202,7 +201,6 @@ function BuscarVendedor(pCodigo){
 }
 
 function AgregarVenta(){
-    
     let codigo = document.getElementById("codigo").value;
     let fecha = document.getElementById("fecha").value;
     let codigoVendedor = document.getElementById("codigo-vendedor").value;
@@ -320,10 +318,10 @@ function EliminarVenta(){
     let unaVenta = BuscarVenta(codigoSeleccionado);
 
     for (let pos = 0; pos < ventas.length; pos++) {
-    if (ventas[pos].codigo == codigoSeleccionado) {
-        posicionVenta = pos;
-        break;
-    }
+        if (ventas[pos].codigo == codigoSeleccionado) {
+            posicionVenta = pos;
+            break;
+        }
     }
 
     if(posicionVenta != -1){
@@ -337,7 +335,6 @@ function EliminarVenta(){
     DevolverCantidadVendidos(unaVenta.producto.codigo, unaVenta.cantidad);
     LaMemoria.escribir('productos', productos);
 
-   
     DevolverCantidadVentas(unaVenta.vendedor.codigo);
     LaMemoria.escribir('vendedores', vendedores);
 

@@ -426,9 +426,9 @@ select {
         width: 100%;
     }
     .encabezado-mobile h1 {
-    margin: 0;
-    padding: 0;
-    line-height: 1.2;
+        margin: 0;
+        padding: 0;
+        line-height: 1.2;
     }
 
     /* Fondo */
@@ -436,14 +436,14 @@ select {
         min-height: 100vh;
     }
     
-   .home {
-    flex-direction: column;
-    gap: 15px;
-    height: auto;
-    min-height: 100vh;
-    background-attachment: scroll;
-    background-image: url(../imagenes/home-mobile.webp);
-}
+    .home {
+        flex-direction: column;
+        gap: 15px;
+        height: auto;
+        min-height: 100vh;
+        background-attachment: scroll;
+        background-image: url(../imagenes/home-mobile.webp);
+    }
 
     .home button {
     width: 150px;
