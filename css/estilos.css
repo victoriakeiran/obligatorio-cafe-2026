@@ -16,7 +16,7 @@ h1 {
 .home {
     margin: 0;
     height: 100vh;
-    background-image: url(../Imagenes/home.webp);
+    background-image: url(..imagenes/home.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -35,7 +35,7 @@ h1 {
 .fondo {
     margin: 0;
     min-height: 100vh;
-    background-image: url(../Imagenes/fondo.webp);
+    background-image: url(../imagenes/fondo.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -425,7 +425,7 @@ select {
     height: auto;
     min-height: 100vh;
     background-attachment: scroll;
-    background-image: url(../Imagenes/home-mobile.webp);
+    background-image: url(../imagenes/home-mobile.webp);
 }
 
     .home button {
