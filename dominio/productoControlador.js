@@ -128,7 +128,7 @@ function AgregarProducto(){
 
     InicializarProducto();
     ListarProductos();
-    MostrarModal("Producto agregado correctamente");
+    alert("Producto agregado correctamente");
 
 }
 
@@ -206,7 +206,7 @@ function ModificarProducto(){
     
     InicializarProducto();
     ListarProductos();
-    MostrarModal("Se ha modificado correctamente su producto");
+    alert("Se ha modificado correctamente su producto");
 }
 
 function BuscarProducto(pCodigo){
@@ -253,7 +253,7 @@ function EliminarProducto(){
 
     InicializarProducto();
     ListarProductos();
-    MostrarModal("Se ha eliminado correctamente su producto");
+    alert("Se ha eliminado correctamente su producto");
 }
 
 document.getElementById("botones-productos").addEventListener("click", function(evento) {

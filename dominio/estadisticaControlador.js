@@ -53,34 +53,23 @@ function ProductosConStock(){
 
 function ProductoMasVendido(){
     let mayor = 0;
-    let productosMasVendidos = [];
+    let objMayor;
 
     for (const unProducto of productos) {
-
-        if (unProducto.cantVendidos > mayor) {
+        if(unProducto.cantVendidos > mayor){
             mayor = unProducto.cantVendidos;
-            productosMasVendidos = [unProducto];
-
-        } else if (unProducto.cantVendidos === mayor && mayor > 0) {
-            productosMasVendidos.push(unProducto);
+            objMayor = unProducto;
         }
     }
 
-    if (productosMasVendidos.length > 0) {
-
-        let nombres = [];
-
-        for (const producto of productosMasVendidos) {
-            nombres.push(producto.nombre);
-        }
-
-        document.getElementById('masVendido').value =
-            nombres.join(" - ") + " con " + mayor + " unidades";
-
-    } else {
+    if (objMayor) {
+      document.getElementById('masVendido').value = objMayor.nombre
+    + " con " + objMayor.cantVendidos + " unidades"; 
+    }else{
         document.getElementById('masVendido').value = "Sin ventas";
     }
 }
+
 function MejorVendedor(){
     let mayor = 0;
     let objMayor;
