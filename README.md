@@ -245,3 +245,8 @@ La aplicación se encuentra publicada en Internet mediante Netlify.
 
 URL del sitio:
 https://obligatoriocafe.netlify.app/
+
+### Repositorio
+
+**Repositorio de GitHub:**  
+https://github.com/victoriakeiran/obligatorio-cafe-2026
