@@ -1,6 +1,6 @@
 import { Ciudad } from './clases/Ciudad.js';
 import { obtenerClimaActual } from './servicios/ClimaApi.js';
-import { mostrarMensaje, ocultarMensaje } from './servicios/ClimaUi.js';
+import { mostrarMensaje, ocultarMensaje } from './servicios/climaUi.js';
 
 const ciudades = [
     new Ciudad('Colonia del Sacramento', -34.4626, -57.8398),
@@ -106,4 +106,3 @@ btnConsultar.addEventListener('click', consultarClima);
 comboCiudades.addEventListener('change', consultarClima);
 
 cargarCiudades();
-consultarClima();

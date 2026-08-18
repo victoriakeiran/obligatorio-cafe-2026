@@ -177,7 +177,7 @@ function ModificarProducto(){
         hayError = true;
     }
 
-    if (isNaN(stock) || stock < 0) {
+    if (isNaN(stock) || stock <= 0) {
         mostrarError("stock", "El stock no puede ser negativo.");
         hayError = true;
     }
