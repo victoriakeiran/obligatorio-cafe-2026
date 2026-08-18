@@ -410,11 +410,14 @@ textarea {
 
     /* HOME */
 
-    .home {
-        min-height: 100dvh;
-        height: auto;
-        background-image: url(../imagenes/home-mobile.webp);
-    }
+   .home {
+    min-height: 120dvh;
+    height: 120dvh;
+    background-image: url(../imagenes/home-mobile.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
     .botones-home {
         flex-direction: column;
