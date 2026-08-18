@@ -411,13 +411,13 @@ textarea {
     /* HOME */
 
    .home {
-    min-height: 120dvh;
-    height: 120dvh;
-    background-image: url(../imagenes/home-mobile.webp);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+        min-height: 120dvh;
+        height: 120dvh;
+        background-image: url(../imagenes/home-mobile.webp);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
     .botones-home {
         flex-direction: column;
@@ -518,7 +518,6 @@ textarea {
         margin-top: 15px;
     }
 }
-
 
 /* RESPONSIVE - PANTALLAS GRANDES */
 @media (min-width: 1200px) {
