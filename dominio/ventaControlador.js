@@ -5,7 +5,7 @@ import { mostrarError, limpiarError } from "./modulos/util.js";
 let ventas = [];
 let productos = [];
 let vendedores = [];
-
+let codigoVentaAEliminar = null;
 
 function CargoDatosVentas(){
     const LaMemoria = new Memoria();
@@ -340,7 +340,38 @@ function EliminarVenta(){
 
     InicializarVenta();
     ListarVentas();
-    MostrarModal("Se ha eliminado correctamente su venta");
+
+    codigoVentaAEliminar = codigoSeleccionado;
+    MostrarModalConfirmar(
+        "¿Está seguro que desea eliminar este producto?"
+    );
+}
+
+function ConfirmarEliminarVenta() {
+    let posicionVenta = -1;
+
+    for (let pos = 0; pos < ventas.length; pos++) {
+        if (ventas[pos].codigo == codigoVentaAEliminar) {
+            posicionVenta = pos;
+            break;
+        }
+    }
+
+    if (posicionVenta != -1) {
+        ventas.splice(posicionVenta, 1);
+    }
+
+    const LaMemoria = new Memoria();
+    LaMemoria.escribir("ventas", ventas);
+
+    CerrarModalConfirmar();
+
+    InicializarVenta();
+    ListarVentas();
+
+    MostrarModal("Se ha eliminado correctamente su producto");
+
+    codigoVentaAEliminar = null;
 }
 
 document.getElementById("botones-ventas").addEventListener("click", function(evento) {

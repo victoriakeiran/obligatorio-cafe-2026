@@ -236,7 +236,7 @@ function EliminarProducto() {
     MostrarModalConfirmar(
         "¿Está seguro que desea eliminar este producto?"
     );
-    }
+}
 
 function ConfirmarEliminarProducto() {
     let posicionProducto = -1;
