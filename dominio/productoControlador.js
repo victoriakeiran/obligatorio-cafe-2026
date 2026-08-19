@@ -43,6 +43,8 @@ function InicializarProducto(){
     limpiarError("precio");
     limpiarError("stock");
     limpiarError("lista-productos");
+
+    document.getElementById("lista-productos").selectedIndex = -1;
     
     document.getElementById("codigo").value = "";
     document.getElementById("nombre").value = "";
@@ -179,7 +181,7 @@ function ModificarProducto(){
     }
 
     if (isNaN(stock) || stock <= 0) {
-        mostrarError("stock", "El stock no puede ser negativo.");
+        mostrarError("stock", "El stock debe ser mayor a 0.");
         hayError = true;
     }
 

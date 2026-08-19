@@ -153,6 +153,8 @@ function InicializarVenta(){
     limpiarError("cantidad");
     limpiarError("lista-ventas");
 
+    document.getElementById("lista-ventas").selectedIndex = -1;
+
     let hoy = new Date();
     
     let anio = hoy.getFullYear();
@@ -385,6 +387,7 @@ document.getElementById("botones-ventas").addEventListener("click", function(eve
 
 document.getElementById("codigo-producto").addEventListener("change", CargarPrecioProducto);
 document.getElementById("cantidad").addEventListener("blur", CalculoTotal);
+document.getElementById("codigo-producto").addEventListener("change", CalculoTotal);
 document.getElementById("lista-ventas").addEventListener("change", SeleccionarVenta);
 
 CargoDatosVentas();

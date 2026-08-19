@@ -110,6 +110,8 @@ function InicializarVendedor(){
     limpiarError("cedula");
     limpiarError("lista-vendedores");
 
+    document.getElementById("lista-vendedores").selectedIndex = -1;
+
     document.getElementById("codigo").value = "";
     document.getElementById("cedula").value = "";
     document.getElementById("nombre").value = "";

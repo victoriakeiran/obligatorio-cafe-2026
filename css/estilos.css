@@ -64,13 +64,12 @@ h1 {
 }
 
 /* BOTONES */
-/* Reemplazá tus reglas de .botones y .boton por estas: */
 .botones {
     margin-top: 15px;
     display: flex;
     justify-content: center;
     gap: 10px;
-    flex-wrap: wrap; /* Por si el texto no entra en pantallas pequeñas */
+    flex-wrap: wrap; 
 }
 .botones input:hover {
     background-color: #A3B18A;
@@ -80,12 +79,12 @@ h1 {
     border: none;
     border-radius: 8px;
     padding: 10px 16px;
-    margin: 0;           /* <--- Quitamos los margins viejos */
+    margin: 0;          
     cursor: pointer;
     color: #000000;
     background-color: #F2EFE6;
     font-weight: bold;
-    flex: 1;             /* <--- Hace que todos midan lo mismo sin deformarse */
+    flex: 1;          
     min-width: 80px;
 }
 
@@ -302,7 +301,7 @@ textarea {
     line-height: 1;
     color: #4f6b52;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Suave sombra para destacar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 /* MODAL DE CONFIRMACIÓN */
