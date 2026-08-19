@@ -24,9 +24,9 @@
     </header>
 
     <main class="contenedorTarjeta">
-        <section class="tarjeta">
-            <h2 class="titulo">ABM Productos</h2>
-            <form>
+        <form style="display: contents;">
+            <section class="tarjeta">
+                <h2 class="titulo">ABM Productos</h2>
                 <div class="campos">
                     <label for="codigo">Código:</label>
                     <input type="number" id="codigo">
@@ -55,16 +55,17 @@
                     <input id="btnEliminar" class="boton" type="button" value="Eliminar">
                     <input id="btnLimpiar" class="boton" type="button" value="Limpiar">
                 </div>
-            </form>
-        </section>
+            </section>
 
-        <section class="tarjeta listado">
-            <h2 class="titulo">Listado de Productos</h2>
-            <label for="lista-productos" class="sr-only">Listado de productos</label>
-            <select id="lista-productos" size="6"></select>
-            <small id="error-lista-productos" class="error"></small>
-        </section>
+            <section class="tarjeta listado">
+                <h2 class="titulo">Listado de Productos</h2>
+                <label for="lista-productos">Seleccione un producto:</label>
+                <select id="lista-productos" size="6"></select>
+                <small id="error-lista-productos" class="error"></small>
+            </section>
+        </form>
     </main>
+
     <div id="modal-mensaje" class="modal-mensaje">
     <div class="modal-contenido">
         <div class="modal-icono">☕</div>
