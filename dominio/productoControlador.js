@@ -4,6 +4,7 @@ import { mostrarError, limpiarError } from "./modulos/util.js";
 
 let productos = [];
 let ventas = [];
+let codigoProductoAEliminar = null;
 
 function CargoDatosProductos(){
     const LaMemoria = new Memoria();
@@ -210,42 +211,65 @@ function BuscarProducto(pCodigo){
     return null;
 }
 
-function EliminarProducto(){
+function EliminarProducto() {
     let codigoSeleccionado = document.getElementById("lista-productos").value;
-    let posicionProducto = -1;
 
     limpiarError("lista-productos");
-  
+
     if (codigoSeleccionado === "") {
         mostrarError("lista-productos", "Debe seleccionar un producto.");
         return;
     }
-    
-    for (let venta of ventas){
+
+    for (let venta of ventas) {
         if (venta.producto.codigo == codigoSeleccionado) {
-            mostrarError("lista-productos", "No se puede eliminar un producto que tiene ventas.");
+            mostrarError(
+                "lista-productos",
+                "No se puede eliminar un producto que tiene ventas."
+            );
             return;
         }
     }
-   
+
+    codigoProductoAEliminar = codigoSeleccionado;
+
+    MostrarModalConfirmar(
+        "¿Está seguro que desea eliminar este producto?"
+    );
+    }
+
+function ConfirmarEliminarProducto() {
+    let posicionProducto = -1;
+
     for (let pos = 0; pos < productos.length; pos++) {
-        if(productos[pos].codigo == codigoSeleccionado){
+        if (productos[pos].codigo == codigoProductoAEliminar) {
             posicionProducto = pos;
             break;
         }
     }
 
-    if(posicionProducto != -1){
+    if (posicionProducto != -1) {
         productos.splice(posicionProducto, 1);
     }
 
     const LaMemoria = new Memoria();
-    LaMemoria.escribir('productos', productos);
+    LaMemoria.escribir("productos", productos);
+
+    CerrarModalConfirmar();
 
     InicializarProducto();
     ListarProductos();
+
     MostrarModal("Se ha eliminado correctamente su producto");
+
+    codigoProductoAEliminar = null;
+
 }
+
+   document
+    .getElementById("btnAceptarEliminar")
+    .addEventListener("click", ConfirmarEliminarProducto);
+
 
 document.getElementById("botones-productos").addEventListener("click", function(evento) {
 

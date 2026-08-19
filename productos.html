@@ -66,13 +66,28 @@
         </section>
     </main>
     <div id="modal-mensaje" class="modal-mensaje">
-        <div class="modal-contenido">
-            <div class="modal-icono">☕</div>
-            <h2>Obligatorio Café</h2>
-            <p id="texto-modal"></p>
-            <button id="btnCerrarModal" class="boton" type="button">Aceptar</button>
-        </div>
+    <div class="modal-contenido">
+        <div class="modal-icono">☕</div>
+        <h2>Obligatorio Café</h2>
+        <p id="texto-modal"></p>
+        <button id="btnCerrarModal" class="boton" type="button">Aceptar</button>
     </div>
+    </div>
+    <div id="modal-confirmar" class="modal-mensaje">
+    <div class="modal-contenido">
+        <div class="modal-icono">☕</div>
+        <h2>Obligatorio Café</h2>
+        <p id="texto-confirmar"></p>
+
+        <button id="btnAceptarEliminar" class="boton" type="button">
+            Aceptar
+        </button>
+
+        <button id="btnCancelarEliminar" class="boton" type="button">
+            Cancelar
+        </button>
+    </div>
+</div>
 <script>
     document.querySelector(".menu-hamburguesa").addEventListener("click", function() {
         document.querySelector(".btnPrincipales").classList.toggle("menu-abierto");
@@ -83,11 +98,30 @@
         document.getElementById("modal-mensaje").classList.add("mostrar");
     }
 
+    function MostrarModalConfirmar(mensaje) {
+    document.getElementById("texto-confirmar").textContent = mensaje;
+    document.getElementById("modal-confirmar").classList.add("mostrar");
+    }
+
     function CerrarModal() {
+        
         document.getElementById("modal-mensaje").classList.remove("mostrar");
     }
 
+    document
+    .getElementById("btnCancelarEliminar")
+    .addEventListener("click", CerrarModalConfirmar);
+
+
+    function CerrarModalConfirmar() {
+    document.getElementById("modal-confirmar").classList.remove("mostrar");
+    }
+
     document.getElementById("btnCerrarModal").addEventListener("click", CerrarModal);
+
+    document
+    .getElementById("btnCancelarEliminar")
+    .addEventListener("click", CerrarModalConfirmar);
 
     document.addEventListener("keydown", function(event) {
         if (
