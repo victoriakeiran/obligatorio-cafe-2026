@@ -304,9 +304,8 @@ function BuscarVenta(pCodigo){
     return null;
 }
 
-function EliminarVenta(){
+function EliminarVenta() {
     let codigoSeleccionado = document.getElementById("lista-ventas").value;
-    let posicionVenta = -1;
 
     limpiarError("lista-ventas");
 
@@ -315,64 +314,58 @@ function EliminarVenta(){
         return;
     }
 
-    let unaVenta = BuscarVenta(codigoSeleccionado);
-
-    for (let pos = 0; pos < ventas.length; pos++) {
-        if (ventas[pos].codigo == codigoSeleccionado) {
-            posicionVenta = pos;
-            break;
-        }
-    }
-
-    if(posicionVenta != -1){
-        ventas.splice(posicionVenta, 1);
-    }
-
-    const LaMemoria = new Memoria();
-    LaMemoria.escribir('ventas', ventas);
-
-    DevolverStock(unaVenta.producto.codigo, unaVenta.cantidad);
-    DevolverCantidadVendidos(unaVenta.producto.codigo, unaVenta.cantidad);
-    LaMemoria.escribir('productos', productos);
-
-    DevolverCantidadVentas(unaVenta.vendedor.codigo);
-    LaMemoria.escribir('vendedores', vendedores);
-
-    InicializarVenta();
-    ListarVentas();
-
+    // Guardamos el código de la venta seleccionada y mostramos la confirmación
     codigoVentaAEliminar = codigoSeleccionado;
+
     MostrarModalConfirmar(
-        "¿Está seguro que desea eliminar este producto?"
+        "¿Está seguro que desea eliminar esta venta?"
     );
 }
 
 function ConfirmarEliminarVenta() {
-    let posicionVenta = -1;
+    let unaVenta = BuscarVenta(codigoVentaAEliminar);
 
-    for (let pos = 0; pos < ventas.length; pos++) {
-        if (ventas[pos].codigo == codigoVentaAEliminar) {
-            posicionVenta = pos;
-            break;
+    if (unaVenta) {
+        let posicionVenta = -1;
+
+        for (let pos = 0; pos < ventas.length; pos++) {
+            if (ventas[pos].codigo == codigoVentaAEliminar) {
+                posicionVenta = pos;
+                break;
+            }
         }
-    }
 
-    if (posicionVenta != -1) {
-        ventas.splice(posicionVenta, 1);
-    }
+        // 1. Eliminar la venta de la lista
+        if (posicionVenta != -1) {
+            ventas.splice(posicionVenta, 1);
+        }
 
-    const LaMemoria = new Memoria();
-    LaMemoria.escribir("ventas", ventas);
+        const LaMemoria = new Memoria();
+        LaMemoria.escribir('ventas', ventas);
+
+        // 2. Devolver el stock al producto y ajustar vendedores
+        DevolverStock(unaVenta.producto.codigo, unaVenta.cantidad);
+        DevolverCantidadVendidos(unaVenta.producto.codigo, unaVenta.cantidad);
+        LaMemoria.escribir('productos', productos);
+
+        DevolverCantidadVentas(unaVenta.vendedor.codigo);
+        LaMemoria.escribir('vendedores', vendedores);
+    }
 
     CerrarModalConfirmar();
 
     InicializarVenta();
     ListarVentas();
 
-    MostrarModal("Se ha eliminado correctamente su producto");
+    MostrarModal("Se ha eliminado correctamente la venta");
 
     codigoVentaAEliminar = null;
 }
+
+// Escuchador de eventos para confirmar la eliminación al presionar "Aceptar"
+document
+    .getElementById("btnAceptarEliminar")
+    .addEventListener("click", ConfirmarEliminarVenta);
 
 document.getElementById("botones-ventas").addEventListener("click", function(evento) {
 

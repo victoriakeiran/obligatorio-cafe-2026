@@ -96,11 +96,10 @@
     </div>
 
 <script>
-
-    document.querySelector(".menu-hamburguesa").addEventListener("click", function() {
-    document.querySelector(".btnPrincipales").classList.toggle("menu-abierto");
+        document.querySelector(".menu-hamburguesa").addEventListener("click", function() {
+        document.querySelector(".btnPrincipales").classList.toggle("menu-abierto");
     });
-    
+
     function MostrarModal(mensaje) {
         document.getElementById("texto-modal").textContent = mensaje;
         document.getElementById("modal-mensaje").classList.add("mostrar");
@@ -115,19 +114,12 @@
         document.getElementById("modal-mensaje").classList.remove("mostrar");
     }
 
-    document.getElementById("btnCancelarEliminar")
-    .addEventListener("click", CerrarModalConfirmar);
-
-
     function CerrarModalConfirmar() {
-    document.getElementById("modal-confirmar").classList.remove("mostrar");
+        document.getElementById("modal-confirmar").classList.remove("mostrar");
     }
 
     document.getElementById("btnCerrarModal").addEventListener("click", CerrarModal);
-
-    document
-    .getElementById("btnCancelarEliminar")
-    .addEventListener("click", CerrarModalConfirmar);
+    document.getElementById("btnCancelarEliminar").addEventListener("click", CerrarModalConfirmar);
 
     document.addEventListener("keydown", function(event) {
         if (

@@ -4,6 +4,7 @@ import { mostrarError, limpiarError } from "./modulos/util.js";
 
 let vendedores = [];
 let ventas = [];
+let codigoVendedorAEliminar = null;
 
 function CargoDatosVendedor(){
     const LaMemoria = new Memoria();
@@ -196,7 +197,6 @@ function BuscarVendedorCedula(pCedula){
 
 function EliminarVendedor(){
     let codigoSeleccionado = document.getElementById("lista-vendedores").value;
-    let posicionVendedor = -1;
 
     limpiarError("lista-vendedores");
 
@@ -212,24 +212,41 @@ function EliminarVendedor(){
         }
     }
 
+    codigoVendedorAEliminar = codigoSeleccionado;
+
+    window.MostrarModalConfirmar(
+        "¿Está seguro que desea eliminar este vendedor?"
+    );
+}
+
+function ConfirmarEliminarVendedor() {
+    let posicionVendedor = -1;
+
     for (let pos = 0; pos < vendedores.length; pos++) {
-        if(vendedores[pos].codigo == codigoSeleccionado){
+        if (vendedores[pos].codigo == codigoVendedorAEliminar) {
             posicionVendedor = pos;
             break;
         }
     }
 
-    if(posicionVendedor != -1){
+    if (posicionVendedor != -1) {
         vendedores.splice(posicionVendedor, 1);
     }
 
     const LaMemoria = new Memoria();
     LaMemoria.escribir('vendedores', vendedores);
 
+    window.CerrarModalConfirmar();
+
     InicializarVendedor();
     ListarVendedores();
-    MostrarModal("El vendedor se elimino correctamente");
+
+    window.MostrarModal("El vendedor se eliminó correctamente");
+
+    codigoVendedorAEliminar = null;
 }
+
+document.getElementById("btnAceptarEliminar").addEventListener("click", ConfirmarEliminarVendedor);
 
 document.getElementById("botones-vendedores").addEventListener("click", function(evento) {
 
