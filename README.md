@@ -2,7 +2,7 @@
 
 ## Descripción
 
-**Obligatorio Café** es una aplicación web desarrollada originalmente en Programación 1 y continuada en el Taller de Profesionalización de una Aplicación Web.
+**Obligatorio Café** es una aplicación web desarrollada originalmente en Programación 1 y Arquitectura y Tecnologia, continuando su desarrollo en el Taller de Profesionalización de una Aplicación Web.
 
 El objetivo del Taller es mejorar progresivamente el proyecto original, incorporando una estructura más organizada, JavaScript moderno, una interfaz responsive, validaciones visuales, persistencia de datos y consumo de servicios externos, manteniendo las funcionalidades existentes.
 
