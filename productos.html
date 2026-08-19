@@ -24,7 +24,7 @@
     </header>
 
     <main class="contenedorTarjeta">
-        <form style="display: contents;">
+        <form>
             <section class="tarjeta">
                 <h2 class="titulo">ABM Productos</h2>
                 <div class="campos">
@@ -59,7 +59,7 @@
 
             <section class="tarjeta listado">
                 <h2 class="titulo">Listado de Productos</h2>
-                <label for="lista-productos">Seleccione un producto:</label>
+                <label for="lista-productos" style="font-weight: normal;">Seleccione un producto:</label>
                 <select id="lista-productos" size="6"></select>
                 <small id="error-lista-productos" class="error"></small>
             </section>
@@ -106,14 +106,8 @@
     }
 
     function CerrarModal() {
-        
         document.getElementById("modal-mensaje").classList.remove("mostrar");
     }
-
-    document
-    .getElementById("btnCancelarEliminar")
-    .addEventListener("click", CerrarModalConfirmar);
-
 
     function CerrarModalConfirmar() {
     document.getElementById("modal-confirmar").classList.remove("mostrar");
@@ -121,9 +115,7 @@
 
     document.getElementById("btnCerrarModal").addEventListener("click", CerrarModal);
 
-    document
-    .getElementById("btnCancelarEliminar")
-    .addEventListener("click", CerrarModalConfirmar);
+    document.getElementById("btnCancelarEliminar").addEventListener("click", CerrarModalConfirmar);
 
     document.addEventListener("keydown", function(event) {
         if (
